@@ -1,18 +1,27 @@
+import React from 'react'
 import Header from './header/Header.jsx'
-import BenefitsSection from './components/BenefitsSection.jsx'
 import HeroSection from './components/HeroSection.jsx'
-import StoreCta from './components/StoreCta.jsx'
+import AboutSection from './components/AboutSection.jsx'
+import ServicesSection from './components/ServicesSection.jsx'
+import WhyChooseUs from './components/WhyChooseUs.jsx'
+import CtaBanner from './components/CtaBanner.jsx'
+import ContactSection from './components/ContactSection.jsx'
 import Footer from './footer/Footer.jsx'
 
 function App() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[var(--color-surface)] text-[var(--color-ink)]">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-blue-600 selection:text-white">
       <Header />
-      <HeroSection />
-      <BenefitsSection />
-      <StoreCta />
+      <main className="flex-1">
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <WhyChooseUs />
+        <CtaBanner />
+        <ContactSection />
+      </main>
       <Footer />
-    </main>
+    </div>
   )
 }
 
