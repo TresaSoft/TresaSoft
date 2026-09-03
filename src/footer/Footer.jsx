@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../components/Logo.jsx'
-import { MessageCircle, Mail, MapPin, ArrowUp } from 'lucide-react'
+import { Mail, MapPin, ArrowUp } from 'lucide-react'
 
 function InstagramIcon({ className = "w-4 h-4" }) {
   return (
@@ -80,28 +80,6 @@ export default function Footer() {
               Contacto Directo
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li>
-                <a
-                  href="https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Quisiera%20hacerles%20una%20consulta."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4 text-emerald-400" />
-                  <span>WhatsApp: Mate (2983-388094)</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/5492983600680?text=Hola%20TresaSoft!%20Quisiera%20hacerles%20una%20consulta."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4 text-emerald-400" />
-                  <span>WhatsApp: Juan (2983-600680)</span>
-                </a>
-              </li>
               <li>
                 <a
                   href="mailto:TresArroyosSoft@gmail.com"

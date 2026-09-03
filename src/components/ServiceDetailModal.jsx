@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { X, CheckCircle2, MessageCircle, ArrowRight, Users, Sparkles } from 'lucide-react'
+import { X, CheckCircle2, ArrowRight, Users, Sparkles } from 'lucide-react'
 
 export default function ServiceDetailModal({ service, isOpen, onClose }) {
   useEffect(() => {
@@ -111,12 +111,10 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           </button>
 
           <a
-            href={service.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contacto"
+            onClick={onClose}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-xl transition-all shadow-sm active:scale-[0.99]"
           >
-            <MessageCircle className="w-5 h-5" />
             <span>Consultar por este servicio</span>
           </a>
         </div>

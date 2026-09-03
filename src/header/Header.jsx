@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Logo from '../components/Logo.jsx'
-import { Menu, X, MessageCircle, PhoneCall } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -29,7 +29,7 @@ export default function Header() {
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
-          : 'bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4'
+          : 'bg-[#eef8fc]/95 backdrop-blur-sm border-b border-[#d9edf5] py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,42 +49,27 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3.5 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/60 rounded-lg transition-colors"
+                className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                  isScrolled
+                    ? 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/60'
+                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/60'
+                }`}
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop Direct Contact CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Quisiera%20hacerles%20una%20consulta."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all shadow-sm hover:shadow active:scale-[0.99]"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Contactar por WhatsApp</span>
-            </a>
-          </div>
-
           {/* Mobile menu button */}
           <div className="flex items-center gap-2 md:hidden">
-            <a
-              href="https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Quisiera%20hacerles%20una%20consulta."
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Abrir WhatsApp con TresaSoft"
-              className="p-2 text-emerald-600 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors"
-            >
-              <MessageCircle className="w-5 h-5" />
-            </a>
-
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-blue-600 hover:bg-slate-100 rounded-lg transition-colors focus-visible:outline-blue-600"
+              className={`p-2 rounded-lg transition-colors focus-visible:outline-blue-600 ${
+                isScrolled
+                  ? 'text-slate-700 hover:text-blue-600 hover:bg-slate-100'
+                  : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100'
+              }`}
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Cerrar menú principal" : "Abrir menú principal"}
             >
@@ -112,28 +97,6 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <div className="pt-3 mt-2 border-t border-slate-100 flex flex-col gap-2">
-              <a
-                href="https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Quisiera%20hacerles%20una%20consulta."
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-4 rounded-xl transition-colors shadow-sm"
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>Escribir por WhatsApp (Mate)</span>
-              </a>
-              <a
-                href="https://wa.me/5492983600680?text=Hola%20TresaSoft!%20Quisiera%20hacerles%20una%20consulta."
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-                className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-4 rounded-xl transition-colors shadow-sm"
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>Escribir por WhatsApp (Juan)</span>
-              </a>
-            </div>
           </nav>
         </div>
       )}

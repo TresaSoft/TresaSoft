@@ -1,5 +1,5 @@
 import React from 'react'
-import { MessageCircle, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function CtaBanner() {
   return (
@@ -29,13 +29,10 @@ export default function CtaBanner() {
         {/* CTA Button */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Tengo%20una%20consulta%20tecnol%C3%B3gica%20para%20mi%20negocio."
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contacto"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-base px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all active:scale-[0.99]"
           >
-            <MessageCircle className="w-5 h-5 text-white" />
-            <span>Hablar con TresaSoft</span>
+            <span>Dejanos tu consulta</span>
           </a>
 
           <a

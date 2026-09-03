@@ -6,6 +6,7 @@ import ServicesSection from './components/ServicesSection.jsx'
 import WhyChooseUs from './components/WhyChooseUs.jsx'
 import CtaBanner from './components/CtaBanner.jsx'
 import ContactSection from './components/ContactSection.jsx'
+import WhatsAppFloating from './components/WhatsAppFloating.jsx'
 import Footer from './footer/Footer.jsx'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <ContactSection />
       </main>
       <Footer />
+      <WhatsAppFloating />
     </div>
   )
 }

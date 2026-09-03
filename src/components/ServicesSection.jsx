@@ -26,7 +26,6 @@ export const servicesData = [
     ],
     targetAudience: 'Comercios, emprendimientos, profesionales, estudios contables y pequeñas empresas.',
     benefitQuote: 'Una herramienta pensada para tu trabajo te ahorra horas de esfuerzo y hace que tu negocio se vea más profesional.',
-    whatsappUrl: 'https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Quisiera%20consultar%20por%20el%20servicio%20de%20Desarrollo%20de%20Software%20y%20Web.'
   },
   {
     id: 'automatizacion',
@@ -51,7 +50,6 @@ export const servicesData = [
     ],
     targetAudience: 'Pequeños negocios, comercios y empresas que pierden tiempo cargando datos a mano todos los días.',
     benefitQuote: 'Dejá que la tecnología haga el trabajo mecánico y dedicate a atender a tus clientes y hacer crecer tu negocio.',
-    whatsappUrl: 'https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Quisiera%20consultar%20por%20soluciones%20de%20Automatizaci%C3%B3n%20para%20mi%20negocio.'
   },
   {
     id: 'soporte-tecnico',
@@ -77,7 +75,6 @@ export const servicesData = [
     ],
     targetAudience: 'Comerciantes, profesionales, oficinas y particulares que necesitan que sus computadoras funcionen sin fallas.',
     benefitQuote: 'Una computadora limpia y con disco sólido nuevo revive por completo y te rinde como una máquina moderna.',
-    whatsappUrl: 'https://wa.me/5492983388094?text=Hola%20TresaSoft!%20Necesito%20asistencia%20t%C3%A9cnica%20o%20mantenimiento%20para%20mis%20computadoras.'
   }
 ]
 
