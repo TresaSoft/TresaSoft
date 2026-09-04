@@ -28,8 +28,8 @@ export default function Header() {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
-          : 'bg-[#eef8fc]/95 backdrop-blur-sm border-b border-[#d9edf5] py-4'
+          ? 'bg-white shadow-md border-b border-slate-200/80 py-3'
+          : 'bg-white shadow-sm border-b border-slate-200/80 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

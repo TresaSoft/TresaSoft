@@ -82,58 +82,58 @@ export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState(null)
 
   return (
-    <section id="servicios" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200/80">
+    <section id="servicios" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">
-            <span className="w-2 h-2 rounded-full bg-blue-600" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" aria-hidden="true" />
             <span>Nuestros Servicios</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b192c] tracking-tight">
+          <h2 className="text-[1.65rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold text-[#0b192c] tracking-tight uppercase">
             ¿Qué hacemos?
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-[13px] sm:text-[15px] text-slate-500 leading-relaxed font-normal">
             Brindamos soluciones concretas, explicadas en tu idioma y adaptadas al tamaño de tu proyecto.
           </p>
         </div>
 
         {/* 3 Main Services Cards */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {servicesData.map((service) => {
             const Icon = service.icon
             return (
               <div
                 key={service.id}
-                className="group flex flex-col justify-between rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-blue-300 hover:-translate-y-2"
+                className="group flex flex-col justify-between rounded-2xl bg-white border border-slate-200/80 p-5 sm:p-6 shadow-sm transition-all duration-300 hover:shadow-[0_16px_40px_rgba(29,100,216,0.15)] hover:border-blue-400 hover:-translate-y-2"
               >
                 <div>
                   {/* Card Badge & Icon */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                      <Icon className="w-7 h-7" />
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60 transition-colors duration-300 group-hover:bg-blue-100">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60 transition-colors duration-300 group-hover:bg-blue-100">
                       {service.badge}
                     </span>
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#0b192c] tracking-tight transition-colors duration-200 group-hover:text-blue-600">
+                  <h3 className="text-[15px] sm:text-lg font-bold text-[#0b192c] tracking-tight transition-colors duration-200 group-hover:text-blue-600 uppercase">
                     {service.title}
                   </h3>
 
                   {/* Short Description */}
-                  <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-[13px] text-slate-500 leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Summary Bullets */}
-                  <div className="mt-6 pt-5 border-t border-slate-100 space-y-2.5">
+                  <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
                     {service.summaryList.map((bullet, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
-                        <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-600 font-medium">
+                        <Check className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
                         <span>{bullet}</span>
                       </div>
                     ))}
@@ -141,14 +141,14 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Card Action Button */}
-                <div className="mt-8 pt-4">
+                <div className="mt-6 pt-3">
                   <button
                     type="button"
                     onClick={() => setSelectedService(service)}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-800 group-hover:bg-blue-600 group-hover:text-white hover:bg-blue-700 transition-all focus-visible:outline-blue-600"
+                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-md font-bold text-[11px] bg-slate-100 text-slate-800 group-hover:bg-blue-600 group-hover:text-white hover:bg-blue-700 transition-all focus-visible:outline-blue-600 uppercase tracking-wider"
                   >
-                    <span>Ver más detalles</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span>Ver detalles</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </button>
                 </div>
 
@@ -158,12 +158,12 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom Reassurance Banner */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-slate-500">
-            ¿Tenés dudas sobre cuál de estos servicios es el adecuado para tu caso?{' '}
+        <div className="mt-10 text-center">
+          <p className="text-xs text-slate-500 uppercase tracking-wider">
+            ¿Tenés dudas?{' '}
             <a
               href="#contacto"
-              className="font-bold text-blue-600 hover:text-blue-800 hover:underline"
+              className="font-bold text-blue-600 hover:text-blue-800"
             >
               Consultanos sin compromiso
             </a>

@@ -14,42 +14,42 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contacto" className="py-16 sm:py-24 bg-white border-y border-slate-200/70">
+    <section id="contacto" className="py-14 sm:py-20 bg-white border-y border-slate-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="max-w-2xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 mb-3">
-            <Mail className="w-4 h-4" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+            <Mail className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Contacto por email</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b192c] tracking-tight">
+          <h2 className="text-[1.65rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold text-[#0b192c] tracking-tight uppercase">
             Hablemos de lo que necesitás
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-[13px] sm:text-[15px] text-slate-500 leading-relaxed font-normal">
             Contanos qué necesitás y te respondemos a la brevedad, sin compromiso.
           </p>
         </div>
 
         {/* Main Grid: Direct WhatsApp Cards on Left, Fast Form on Right */}
-        <div className="mt-10 max-w-2xl mx-auto">
-          <div className="bg-slate-50 border border-slate-200 rounded-md p-6 sm:p-8 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-blue-600 text-white">
-                <Mail className="h-5 w-5" />
+        <div className="mt-8 max-w-2xl mx-auto">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm">
+            <div className="flex items-center gap-2.5 border-b border-slate-200 pb-3 mb-5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
+                <Mail className="h-4 w-4" />
               </div>
-              <h3 className="text-xl font-bold text-[#0b192c]">
+              <h3 className="text-base font-bold text-[#0b192c] uppercase tracking-wide">
               Dejanos tu consulta
               </h3>
             </div>
-            <p className="text-sm text-slate-600 mb-6">
+            <p className="text-xs text-slate-500 mb-5">
               Completá los datos y se abrirá tu aplicación de correo con el mensaje listo.
             </p>
 
-            <form onSubmit={handleEmailSubmit} className="space-y-4">
+            <form onSubmit={handleEmailSubmit} className="space-y-3.5">
               
               <div>
-                <label htmlFor="contact-name" className="block text-sm font-semibold text-slate-700 mb-1.5">
+                <label htmlFor="contact-name" className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
                   Tu nombre o negocio <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -59,12 +59,12 @@ export default function ContactSection() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Ej: Laura / Ferretería Central"
-                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-md text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 text-sm font-medium"
+                  className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 text-xs font-medium"
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-message" className="block text-sm font-semibold text-slate-700 mb-1.5">
+                <label htmlFor="contact-message" className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
                   ¿Qué necesitás? <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -73,20 +73,20 @@ export default function ContactSection() {
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Contanos brevemente qué necesitás (ej: necesito una página web, se me tilda la computadora, quiero automatizar un proceso)..."
-                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-md text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 text-sm font-medium resize-none"
+                  placeholder="Contanos brevemente qué necesitás..."
+                  className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 text-xs font-medium resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-base py-3.5 px-6 rounded-md transition-all shadow-sm active:scale-[0.99]"
+                className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-3 px-5 rounded-lg transition-all shadow-sm active:scale-[0.99] uppercase tracking-wider"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4" />
                 <span>Preparar email</span>
               </button>
 
-              <p className="text-xs text-center text-slate-500 mt-2">
+              <p className="text-[10px] text-center text-slate-500 mt-1 uppercase tracking-wider">
                 Al presionar, se abrirá tu aplicación de correo.
               </p>
 
