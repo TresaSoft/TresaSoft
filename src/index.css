@@ -60,3 +60,14 @@
 .transition-card:hover {
   transform: translateY(-4px);
 }
+
+/* Integración del fondo continuo interactivo:
+   Permite que el canvas dinámico sea visible en el fondo general mientras
+   se preservan al 100% las tarjetas, modales, formularios y textos */
+#inicio,
+#nosotros,
+#servicios,
+#beneficios,
+#contacto {
+  background-color: transparent !important;
+}

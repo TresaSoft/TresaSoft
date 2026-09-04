@@ -108,17 +108,17 @@ export default function HeroSection() {
                 <div className="relative space-y-3.5">
                   
                   {/* Pillar 1: Soporte y Asistencia Técnica */}
-                  <div className="group border-b border-slate-200 pb-5 transition-all hover:border-blue-300">
+                  <div className="group border-b border-slate-200 pb-5 p-2.5 -mx-2.5 rounded-xl transition-all duration-300 hover:bg-white/60 hover:translate-x-1.5 hover:border-blue-300">
                     <div className="flex items-start gap-3.5">
-                        <div className="p-2.5 rounded-lg bg-blue-600 text-white shrink-0">
+                      <div className="p-2.5 rounded-lg bg-blue-600 text-white shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-xs">
                         <Laptop className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
-                          <h3 className="font-bold text-slate-900 text-base">
+                          <h3 className="font-bold text-slate-900 text-base transition-colors duration-200 group-hover:text-blue-700">
                             Soporte y Asistencia Técnica
                           </h3>
-                          <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 shrink-0">
+                          <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 shrink-0 transition-colors duration-200 group-hover:bg-blue-100">
                             Puesta a punto
                           </span>
                         </div>
@@ -130,17 +130,17 @@ export default function HeroSection() {
                   </div>
 
                   {/* Pillar 2: Desarrollo y Automatización */}
-                  <div className="group pt-1 transition-all">
+                  <div className="group pt-2 p-2.5 -mx-2.5 rounded-xl transition-all duration-300 hover:bg-white/60 hover:translate-x-1.5">
                     <div className="flex items-start gap-3.5">
-                        <div className="p-2.5 rounded-lg bg-slate-100 text-blue-600 shrink-0">
+                      <div className="p-2.5 rounded-lg bg-slate-100 text-blue-600 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white shadow-xs">
                         <Cpu className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
-                          <h3 className="font-bold text-slate-900 text-base">
+                          <h3 className="font-bold text-slate-900 text-base transition-colors duration-200 group-hover:text-blue-700">
                             Desarrollo y Automatización
                           </h3>
-                          <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 shrink-0">
+                          <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 shrink-0 transition-colors duration-200 group-hover:bg-blue-100">
                             A medida
                           </span>
                         </div>

@@ -106,21 +106,21 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="flex flex-col justify-between rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-sm transition-card hover:shadow-xl hover:border-blue-300"
+                className="group flex flex-col justify-between rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-blue-300 hover:-translate-y-2"
               >
                 <div>
                   {/* Card Badge & Icon */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs">
+                    <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
                       <Icon className="w-7 h-7" />
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60 transition-colors duration-300 group-hover:bg-blue-100">
                       {service.badge}
                     </span>
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#0b192c] tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0b192c] tracking-tight transition-colors duration-200 group-hover:text-blue-600">
                     {service.title}
                   </h3>
 
@@ -145,10 +145,10 @@ export default function ServicesSection() {
                   <button
                     type="button"
                     onClick={() => setSelectedService(service)}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-800 hover:bg-blue-600 hover:text-white transition-all focus-visible:outline-blue-600"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-800 group-hover:bg-blue-600 group-hover:text-white hover:bg-blue-700 transition-all focus-visible:outline-blue-600"
                   >
                     <span>Ver más detalles</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </div>
 

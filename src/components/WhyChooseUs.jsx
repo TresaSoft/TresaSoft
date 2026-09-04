@@ -54,13 +54,13 @@ export default function WhyChooseUs() {
             {points.map((pt, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all"
+                className="group p-6 rounded-2xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-blue-300 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center font-bold text-sm">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                  <div className="w-8 h-8 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center font-bold text-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                    <CheckCircle2 className="w-5 h-5 transition-transform duration-300" />
                   </div>
-                  <h3 className="font-bold text-base sm:text-lg text-[#0b192c]">
+                  <h3 className="font-bold text-base sm:text-lg text-[#0b192c] transition-colors duration-200 group-hover:text-blue-700">
                     {pt.title}
                   </h3>
                 </div>
