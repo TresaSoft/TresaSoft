@@ -40,10 +40,10 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
               <Icon className="w-4 h-4" />
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-blue-600">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
                 {service.badge}
               </span>
-              <h3 id="modal-service-title" className="text-base font-extrabold text-[#0b192c] uppercase tracking-wide">
+              <h3 id="modal-service-title" className="text-lg font-extrabold text-[#0b192c] tracking-tight">
                 {service.title}
               </h3>
             </div>
@@ -63,19 +63,19 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
         <div className="p-5 sm:p-6 overflow-y-auto space-y-5">
           
           {/* Main summary */}
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-[15px] text-slate-600 leading-relaxed">
             {service.fullDescription || service.description}
           </p>
 
           {/* Section: ¿Qué hacemos? */}
           <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-            <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-[#0b192c] mb-2.5 flex items-center gap-2">
+            <h4 className="text-[13px] font-bold text-[#0b192c] mb-2.5 flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-blue-600" />
               <span>¿Qué incluye?</span>
             </h4>
             <ul className="space-y-2">
               {service.features.map((item, index) => (
-                <li key={index} className="flex items-start gap-2.5 text-slate-600 text-[13px] leading-snug">
+                <li key={index} className="flex items-start gap-2.5 text-slate-600 text-[14px] leading-snug">
                   <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </li>
@@ -85,17 +85,17 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
 
           {/* Section: ¿Para quién es? */}
           <div className="rounded-lg border border-blue-100 bg-blue-50/50 p-4">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 mb-1.5 flex items-center gap-2">
+            <h4 className="text-[13px] font-bold text-blue-700 mb-1.5 flex items-center gap-2">
               <Users className="w-3.5 h-3.5 text-blue-600" />
               <span>¿Para quién está pensado?</span>
             </h4>
-            <p className="text-[13px] text-slate-700 font-medium">
+            <p className="text-[14px] text-slate-700 font-medium">
               {service.targetAudience}
             </p>
           </div>
 
           {/* Real Work Benefit */}
-          <div className="border-l-[3px] border-blue-600 pl-3 py-0.5 text-slate-500 text-[13px] italic">
+          <div className="border-l-[3px] border-blue-600 pl-3 py-0.5 text-slate-500 text-[14px] italic">
             "{service.benefitQuote}"
           </div>
 
@@ -106,7 +106,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="w-full sm:w-auto px-4 py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 rounded-md transition-colors uppercase tracking-wider"
+            className="w-full sm:w-auto px-4 py-2 text-[13px] font-semibold text-slate-500 hover:text-slate-800 rounded-md transition-colors"
           >
             Cerrar
           </button>
@@ -114,7 +114,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           <a
             href="#contacto"
             onClick={onClose}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-md transition-all shadow-sm active:scale-[0.99] uppercase tracking-wider"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[13px] px-5 py-2.5 rounded-md transition-colors shadow-sm active:scale-[0.99]"
           >
             <span>Consultar</span>
             <ArrowRight className="w-3.5 h-3.5" />

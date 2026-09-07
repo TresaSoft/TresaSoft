@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Code2, Cpu, Wrench, ArrowRight, Check, Sparkles } from 'lucide-react'
+import { Code2, Cpu, Wrench, ArrowRight, Check } from 'lucide-react'
 import ServiceDetailModal from './ServiceDetailModal.jsx'
 
 export const servicesData = [
@@ -9,6 +9,12 @@ export const servicesData = [
     badge: 'Sistemas & Web',
     icon: Code2,
     color: 'blue',
+    accentBg: 'bg-blue-50',
+    accentBorder: 'border-blue-100',
+    accentText: 'text-blue-700',
+    accentIconBg: 'bg-blue-600',
+    accentIconHover: 'hover:bg-blue-700',
+    accentShadow: 'shadow-blue-600/20',
     description: 'Desarrollamos sistemas y páginas web adaptadas a las necesidades de cada proyecto.',
     fullDescription: 'Creamos herramientas digitales claras, modernas y accesibles para que tu negocio tenga presencia en internet y gestione sus operaciones sin complicaciones.',
     summaryList: [
@@ -33,6 +39,12 @@ export const servicesData = [
     badge: 'Ahorro de Tiempo',
     icon: Cpu,
     color: 'indigo',
+    accentBg: 'bg-indigo-50',
+    accentBorder: 'border-indigo-100',
+    accentText: 'text-indigo-700',
+    accentIconBg: 'bg-indigo-600',
+    accentIconHover: 'hover:bg-indigo-700',
+    accentShadow: 'shadow-indigo-600/20',
     description: 'Automatizamos tareas y procesos para ahorrar tiempo y simplificar el trabajo.',
     fullDescription: 'Conectamos tus sistemas y planillas para que lo repetitivo se haga de manera automática, reduciendo errores humanos y liberando tu tiempo.',
     summaryList: [
@@ -56,7 +68,13 @@ export const servicesData = [
     title: 'Soporte y Asistencia Técnica',
     badge: 'Puesta a Punto',
     icon: Wrench,
-    color: 'sky',
+    color: 'emerald',
+    accentBg: 'bg-emerald-50',
+    accentBorder: 'border-emerald-100',
+    accentText: 'text-emerald-700',
+    accentIconBg: 'bg-emerald-600',
+    accentIconHover: 'hover:bg-emerald-700',
+    accentShadow: 'shadow-emerald-600/20',
     description: 'Mantenimiento, diagnóstico, reparación y puesta a punto de equipos informáticos.',
     fullDescription: 'Cuidamos las computadoras de tu hogar o lugar de trabajo para que funcionen con la velocidad, seguridad y confiabilidad que necesitás.',
     summaryList: [
@@ -78,62 +96,65 @@ export const servicesData = [
   }
 ]
 
+const colorMap = {
+  blue: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-700', iconBg: 'bg-blue-600', iconHover: 'hover:bg-blue-700', shadow: 'shadow-blue-600/20', buttonHover: 'hover:bg-blue-600', buttonBase: 'bg-blue-600' },
+  indigo: { bg: 'bg-indigo-50', border: 'border-indigo-100', text: 'text-indigo-700', iconBg: 'bg-indigo-600', iconHover: 'hover:bg-indigo-700', shadow: 'shadow-indigo-600/20', buttonHover: 'hover:bg-indigo-600', buttonBase: 'bg-indigo-600' },
+  emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-700', iconBg: 'bg-emerald-600', iconHover: 'hover:bg-emerald-700', shadow: 'shadow-emerald-600/20', buttonHover: 'hover:bg-emerald-600', buttonBase: 'bg-emerald-600' },
+}
+
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState(null)
 
   return (
-    <section id="servicios" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
+    <section id="servicios" className="bg-services py-20 sm:py-28 border-b border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" aria-hidden="true" />
-            <span>Nuestros Servicios</span>
-          </div>
-          <h2 className="text-[1.65rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold text-[#0b192c] tracking-tight uppercase">
+          <h2 className="heading-balance text-[1.65rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold text-[#0b192c] tracking-tight">
             ¿Qué hacemos?
           </h2>
-          <p className="mt-3 text-[13px] sm:text-[15px] text-slate-500 leading-relaxed font-normal">
-            Brindamos soluciones concretas, explicadas en tu idioma y adaptadas al tamaño de tu proyecto.
+          <p className="mt-3 text-[15px] sm:text-[16px] text-slate-500 leading-relaxed font-normal">
+            Soluciones concretas, explicadas en tu idioma y adaptadas al tamaño de tu proyecto.
           </p>
         </div>
 
         {/* 3 Main Services Cards */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {servicesData.map((service) => {
             const Icon = service.icon
+            const c = colorMap[service.color]
             return (
               <div
                 key={service.id}
-                className="group flex flex-col justify-between rounded-2xl bg-white border border-slate-200/80 p-5 sm:p-6 shadow-sm transition-all duration-300 hover:shadow-[0_16px_40px_rgba(29,100,216,0.15)] hover:border-blue-400 hover:-translate-y-2"
+                className="card-service group flex flex-col justify-between rounded-xl bg-white border border-slate-200/60 p-5 sm:p-6 shadow-sm hover:shadow-lg hover:shadow-slate-900/5 transition-shadow duration-300"
               >
                 <div>
-                  {/* Card Badge & Icon */}
+                  {/* Card Icon & Badge */}
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white">
+                    <div className={`w-11 h-11 rounded-lg ${c.iconBg} ${c.iconHover} flex items-center justify-center text-white shadow-md ${c.shadow} transition-all duration-300 group-hover:scale-105`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60 transition-colors duration-300 group-hover:bg-blue-100">
+                    <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-md ${c.bg} ${c.accentText} ${c.accentBorder}`}>
                       {service.badge}
                     </span>
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-[15px] sm:text-lg font-bold text-[#0b192c] tracking-tight transition-colors duration-200 group-hover:text-blue-600 uppercase">
+                  <h3 className="text-[16px] sm:text-lg font-bold text-[#0b192c] tracking-tight transition-colors duration-200 group-hover:text-blue-600">
                     {service.title}
                   </h3>
 
                   {/* Short Description */}
-                  <p className="mt-2 text-xs sm:text-[13px] text-slate-500 leading-relaxed">
+                  <p className="mt-2 text-[14px] sm:text-[15px] text-slate-500 leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Summary Bullets */}
                   <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
                     {service.summaryList.map((bullet, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-600 font-medium">
-                        <Check className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2 text-[13px] sm:text-[14px] text-slate-600 font-medium">
+                        <Check className={`w-3.5 h-3.5 ${c.accentText} shrink-0 mt-0.5`} />
                         <span>{bullet}</span>
                       </div>
                     ))}
@@ -145,9 +166,9 @@ export default function ServicesSection() {
                   <button
                     type="button"
                     onClick={() => setSelectedService(service)}
-                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-md font-bold text-[11px] bg-slate-100 text-slate-800 group-hover:bg-blue-600 group-hover:text-white hover:bg-blue-700 transition-all focus-visible:outline-blue-600 uppercase tracking-wider"
+                    className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-semibold text-[13px] ${c.buttonBase} text-white transition-colors duration-200 ${c.buttonHover}`}
                   >
-                    <span>Ver detalles</span>
+                    <span>Ver más</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </button>
                 </div>
@@ -157,14 +178,11 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* Bottom Reassurance Banner */}
+        {/* Bottom Reassurance */}
         <div className="mt-10 text-center">
-          <p className="text-xs text-slate-500 uppercase tracking-wider">
-            ¿Tenés dudas?{' '}
-            <a
-              href="#contacto"
-              className="font-bold text-blue-600 hover:text-blue-800"
-            >
+          <p className="text-[14px] text-slate-500">
+            ¿Tenés dudas sobre cuál servicio necesitás?{' '}
+            <a href="#contacto" className="font-semibold text-blue-600 hover:text-blue-800">
               Consultanos sin compromiso
             </a>
           </p>
@@ -172,7 +190,6 @@ export default function ServicesSection() {
 
       </div>
 
-      {/* Service Detail Modal */}
       <ServiceDetailModal
         service={selectedService}
         isOpen={Boolean(selectedService)}

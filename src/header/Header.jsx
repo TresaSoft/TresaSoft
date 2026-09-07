@@ -49,11 +49,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
-                  isScrolled
-                    ? 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/60'
-                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/60'
-                }`}
+                className="px-3.5 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/60 rounded-lg transition-colors"
               >
                 {link.label}
               </a>
@@ -65,11 +61,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors focus-visible:outline-blue-600 ${
-                isScrolled
-                  ? 'text-slate-700 hover:text-blue-600 hover:bg-slate-100'
-                  : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100'
-              }`}
+              className="p-2 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors focus-visible:outline-blue-600"
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Cerrar menú principal" : "Abrir menú principal"}
             >

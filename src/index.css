@@ -9,7 +9,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    /* TresaSoft Color Tokens */
     --color-navy: #0b192c;
     --color-navy-dark: #07101d;
     --color-navy-card: #0e223c;
@@ -22,12 +21,10 @@
     --color-text-muted: #475569;
     --color-line: #e2e8f0;
     --color-surface-card: #ffffff;
-    --color-surface-bg: #f8fafc;
+    --color-surface-bg: #f1f5f9;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     background-color: var(--color-surface-bg);
@@ -35,29 +32,73 @@
     overflow-x: hidden;
   }
 
-  /* Accessible focus indicators for keyboard navigation */
   :focus-visible {
     outline: 3px solid #2563eb;
     outline-offset: 3px;
   }
 }
 
-/* Smooth micro-transitions */
-.transition-card {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+/* Hero */
+.hero-tech-bg {
+  background:
+    radial-gradient(ellipse 70% 50% at 75% 45%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
-.transition-card:hover {
+/* About */
+.bg-about {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 0%, transparent 30%),
+    #ffffff;
+}
+
+/* Services */
+.bg-services {
+  background:
+    radial-gradient(ellipse 50% 30% at 50% 0%, rgba(37, 99, 235, 0.04) 0%, transparent 70%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* Why */
+.bg-why {
+  background:
+    linear-gradient(270deg, rgba(37, 99, 235, 0.03) 0%, transparent 30%),
+    #ffffff;
+}
+
+/* CTA */
+.bg-cta {
+  background:
+    radial-gradient(ellipse 50% 60% at 30% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 80% 60%, rgba(56, 189, 248, 0.1) 0%, transparent 60%),
+    #0b192c;
+}
+
+/* Contact */
+.bg-contact {
+  background:
+    radial-gradient(ellipse 40% 40% at 50% 100%, rgba(37, 99, 235, 0.03) 0%, transparent 60%),
+    #ffffff;
+}
+
+/* Card hover - explicit properties only */
+.card-service {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-service:hover {
+  box-shadow: 0 20px 50px -12px rgba(29, 100, 216, 0.2), 0 0 0 1px rgba(37, 99, 235, 0.1);
   transform: translateY(-4px);
 }
 
-/* Integración del fondo continuo interactivo:
-   Permite que el canvas dinámico sea visible en el fondo general mientras
-   se preservan al 100% las tarjetas, modales, formularios y textos */
-#inicio,
-#nosotros,
-#servicios,
-#beneficios,
-#contacto {
-  background-color: transparent !important;
+.card-why {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-why:hover {
+  box-shadow: 0 12px 30px -8px rgba(29, 100, 216, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Heading balance */
+.heading-balance {
+  text-wrap: balance;
 }

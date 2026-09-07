@@ -18,7 +18,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#0b192c] text-slate-400 border-t border-slate-800">
+    <footer className="bg-[#07101d] text-slate-400 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
@@ -28,13 +28,13 @@ export default function Footer() {
             <a href="#inicio" className="inline-block focus-visible:outline-blue-400 rounded-lg">
               <Logo variant="light" size="md" />
             </a>
-            <p className="text-sm text-slate-300 font-medium">
+            <p className="text-[15px] text-slate-300 font-medium">
               Tecnología que impulsa tu negocio.
             </p>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-[13px] text-slate-500 leading-relaxed max-w-sm">
               Soluciones tecnológicas pensadas para hacer más simple tu trabajo. Desarrollo de software y web, automatización de procesos y soporte técnico.
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-300 font-medium pt-1">
+            <div className="flex items-center gap-2 text-[13px] text-slate-400 font-medium pt-1">
               <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
               <span>Tres Arroyos, Buenos Aires, Argentina</span>
             </div>
@@ -42,10 +42,10 @@ export default function Footer() {
 
           {/* Quick Navigation Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-slate-200">
+            <h4 className="text-[13px] font-bold text-slate-300">
               Navegación
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-[15px]">
               <li>
                 <a href="#inicio" className="hover:text-white transition-colors">
                   Inicio
@@ -76,10 +76,10 @@ export default function Footer() {
 
           {/* Contact Links */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-slate-200">
-              Contacto Directo
+            <h4 className="text-[13px] font-bold text-slate-300">
+              Contacto directo
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-[15px]">
               <li>
                 <a
                   href="mailto:TresArroyosSoft@gmail.com"
@@ -106,13 +106,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Line */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 TresaSoft — Soluciones Tecnológicas. Todos los derechos reservados.</p>
+        <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-slate-500">
+          <p>© 2026 TresaSoft — Soluciones Tecnológicas</p>
           
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors p-1 rounded focus-visible:outline-blue-400"
+            className="inline-flex items-center gap-1.5 text-slate-500 hover:text-white transition-colors p-1 rounded focus-visible:outline-blue-400"
             aria-label="Volver arriba de la página"
           >
             <span>Volver arriba</span>
