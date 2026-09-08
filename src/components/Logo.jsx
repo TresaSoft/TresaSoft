@@ -1,16 +1,16 @@
 import React from 'react'
 
-export function LogoEmblem({ className = "w-10 h-10", isDarkBackground = false }) {
+export function LogoEmblem({ className = "w-10 h-10" }) {
   return (
-    <div className={`relative flex items-center justify-center shrink-0 rounded-full overflow-hidden ${className}`}>
-      {/* High-definition emblem from official brand assets */}
+    <span className={`brand-emblem ${className}`} aria-hidden="true">
       <img
         src="/assets/imagen1.png"
-        alt="Isotipo TresaSoft"
-        className="w-full h-full object-cover rounded-full shadow-sm"
-        loading="eager"
+        alt=""
+        width="1254"
+        height="1254"
+        decoding="async"
       />
-    </div>
+    </span>
   )
 }
 
@@ -22,7 +22,7 @@ export default function Logo({
 }) {
   const isLightText = variant === "light"
 
-  const sizeClasses = {
+  const sizes = {
     sm: {
       emblem: "w-8 h-8",
       title: "text-lg",
@@ -38,17 +38,18 @@ export default function Logo({
       title: "text-2xl sm:text-3xl",
       subtitle: "text-xs"
     }
-  }[size] || sizeClasses.md
+  }
+  const sizeClasses = sizes[size] || sizes.md
 
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
-      <LogoEmblem className={sizeClasses.emblem} isDarkBackground={isLightText} />
+      <LogoEmblem className={sizeClasses.emblem} />
       <div className="flex flex-col leading-none">
         <span className={`font-extrabold tracking-tight ${sizeClasses.title} ${isLightText ? 'text-white' : 'text-[#0b192c]'}`}>
-          Tresa<span className="text-[#2563eb]">Soft</span>
+          Tresa<span className={isLightText ? 'text-blue-400' : 'text-[#2563eb]'}>Soft</span>
         </span>
         {showSubtitle && (
-          <span className={`font-semibold uppercase tracking-[0.14em] mt-0.5 ${sizeClasses.subtitle} ${isLightText ? 'text-slate-300' : 'text-slate-500'}`}>
+          <span className={`font-medium tracking-[0.025em] mt-1 ${sizeClasses.subtitle} ${isLightText ? 'text-slate-300' : 'text-slate-500'}`}>
             Soluciones Tecnológicas
           </span>
         )}

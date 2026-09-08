@@ -1,97 +1,129 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import Logo from '../components/Logo.jsx'
-import { Menu, X } from 'lucide-react'
+
+const navLinks = [
+  { label: 'Inicio', href: '#inicio' },
+  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: '¿Por qué TresaSoft?', href: '#beneficios' },
+  { label: 'Contacto', href: '#contacto' },
+]
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('inicio')
+  const [isPastHeroHalf, setIsPastHeroHalf] = useState(false)
+  const headerRef = useRef(null)
+  const menuButtonRef = useRef(null)
+
+  const isSolid = isPastHeroHalf || isMobileMenuOpen
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+    const hero = document.getElementById('inicio')
+    if (!hero) return
+
+    const updateHeader = () => {
+      const threshold = hero.offsetTop + hero.offsetHeight / 2
+      const nextValue = window.scrollY >= threshold
+      setIsPastHeroHalf((currentValue) => currentValue === nextValue ? currentValue : nextValue)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    const resizeObserver = new ResizeObserver(updateHeader)
+    resizeObserver.observe(hero)
+    window.addEventListener('scroll', updateHeader, { passive: true })
+    updateHeader()
+
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('scroll', updateHeader)
+    }
   }, [])
 
-  const navLinks = [
-    { label: 'Inicio', href: '#inicio' },
-    { label: 'Nosotros', href: '#nosotros' },
-    { label: 'Servicios', href: '#servicios' },
-    { label: '¿Por qué TresaSoft?', href: '#beneficios' },
-    { label: 'Contacto', href: '#contacto' },
-  ]
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.find((entry) => entry.isIntersecting)
+      if (visible) setActiveSection(visible.target.id)
+    }, { rootMargin: '-20% 0px -55% 0px' })
 
-  const closeMenu = () => setIsMobileMenuOpen(false)
+    navLinks.forEach(({ href }) => {
+      const section = document.querySelector(href)
+      if (section) observer.observe(section)
+    })
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+    const closeOutside = (event) => {
+      if (!headerRef.current?.contains(event.target)) setIsMobileMenuOpen(false)
+    }
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMobileMenuOpen(false)
+    }
+    document.addEventListener('keydown', closeOnEscape)
+    document.addEventListener('pointerdown', closeOutside)
+    document.addEventListener('focusin', closeOutside)
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('pointerdown', closeOutside)
+      document.removeEventListener('focusin', closeOutside)
+      desktop.removeEventListener('change', closeOnDesktop)
+    }
+  }, [isMobileMenuOpen])
+
+  const renderLink = ({ label, href }) => (
+    <a
+      key={href}
+      href={href}
+      onClick={() => setIsMobileMenuOpen(false)}
+      aria-current={activeSection === href.slice(1) ? 'location' : undefined}
+      className={`nav-link ${href === '#contacto' ? 'nav-link-contact' : ''}`}
+    >
+      {label}
+      {href === '#contacto' ? <ArrowUpRight size={16} aria-hidden="true" /> : null}
+    </a>
+  )
 
   return (
-    <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white shadow-md border-b border-slate-200/80 py-3'
-          : 'bg-white shadow-sm border-b border-slate-200/80 py-4'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#inicio"
-            className="focus-visible:outline-blue-600 rounded-lg transition-opacity hover:opacity-95"
-            aria-label="TresaSoft - Volver al inicio"
-          >
-            <Logo size="md" variant="dark" />
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Navegación principal">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-3.5 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/60 rounded-lg transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile menu button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors focus-visible:outline-blue-600"
-              aria-expanded={isMobileMenuOpen}
-              aria-label={isMobileMenuOpen ? "Cerrar menú principal" : "Abrir menú principal"}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
+    <header ref={headerRef} className={`site-header ${isSolid ? 'site-header-solid' : 'site-header-transparent'}`}>
+      <div className="page-container flex min-h-20 items-center justify-between gap-6">
+        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg" aria-label="TresaSoft, volver al inicio">
+          <Logo size="md" variant={isSolid ? 'dark' : 'light'} />
+        </a>
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
+          {navLinks.map(renderLink)}
+        </nav>
+        <button
+          ref={menuButtonRef}
+          type="button"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className="menu-toggle lg:hidden"
+          aria-controls="mobile-navigation"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? 'Cerrar menú principal' : 'Abrir menú principal'}
+        >
+          {isMobileMenuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
+        </button>
       </div>
-
-      {/* Mobile Drawer Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-x-0 top-full bg-white border-b border-slate-200 shadow-xl py-4 px-6 animate-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col gap-1.5" aria-label="Navegación móvil">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={closeMenu}
-                className="px-4 py-3 text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+      <nav
+        id="mobile-navigation"
+        className="mobile-navigation lg:hidden"
+        aria-label="Navegación móvil"
+        hidden={!isMobileMenuOpen}
+      >
+        <div className="page-container flex flex-col gap-1 py-4">
+          {navLinks.map(renderLink)}
         </div>
-      )}
+      </nav>
     </header>
   )
 }

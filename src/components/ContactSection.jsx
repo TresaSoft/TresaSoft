@@ -1,89 +1,66 @@
-import React, { useState } from 'react'
-import { Mail, Send } from 'lucide-react'
+﻿import React from 'react'
+import { ArrowUpRight, Mail, MapPin, MessageCircle } from 'lucide-react'
 
 export default function ContactSection() {
-  const [name, setName] = useState('')
-  const [message, setMessage] = useState('')
+  const handleEmailSubmit = (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const nameField = form.elements.namedItem('name')
+    const messageField = form.elements.namedItem('message')
 
-  const handleEmailSubmit = (e) => {
-    e.preventDefault()
+    nameField.setCustomValidity(nameField.value.trim() ? '' : 'Escribí tu nombre o el de tu negocio.')
+    messageField.setCustomValidity(messageField.value.trim() ? '' : 'Contanos brevemente qué necesitás.')
+    if (!form.reportValidity()) return
+
+    const name = nameField.value.trim()
+    const message = messageField.value.trim()
     const subject = `Consulta de ${name}`
     const body = `Hola TresaSoft,\n\nMi nombre es ${name}.\n\nConsulta:\n${message}`
-    const url = `mailto:TresArroyosSoft@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    window.open(url, '_blank')
+    window.location.href = `mailto:TresArroyosSoft@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   return (
-    <section id="contacto" className="py-20 sm:py-28 bg-contact border-t border-slate-200/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="heading-balance text-[1.65rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold text-[#0b192c] tracking-tight">
-            Hablemos de lo que necesitás
-          </h2>
-          <p className="mt-3 text-[15px] sm:text-[16px] text-slate-500 leading-relaxed font-normal">
-            Completá el formulario y te respondemos a la brevedad, sin compromiso.
-          </p>
-        </div>
-
-        <div className="mt-10 max-w-2xl mx-auto">
-          <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm shadow-slate-900/5">
-            <form onSubmit={handleEmailSubmit} className="space-y-5">
-              
-              <div>
-                <label htmlFor="contact-name" className="block text-[13px] font-semibold text-slate-700 mb-1.5">
-                  Tu nombre o negocio <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Ej: Laura / Ferretería Central"
-                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none text-[14px] font-medium transition-all duration-200 hover:border-slate-400"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="contact-message" className="block text-[13px] font-semibold text-slate-700 mb-1.5">
-                  ¿Qué necesitás? <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  id="contact-message"
-                  required
-                  rows={4}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Contanos brevemente qué necesitás…"
-                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none text-[14px] font-medium resize-y transition-all duration-200 hover:border-slate-400 min-h-[100px]"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[14px] py-3.5 px-6 rounded-lg transition-colors duration-200 shadow-md shadow-blue-600/25 active:scale-[0.98]"
-              >
-                <Send className="w-4 h-4" />
-                <span>Enviar consulta</span>
-              </button>
-
-              <p className="text-[12px] text-center text-slate-400">
-                Se abrirá tu aplicación de correo con el mensaje listo para enviar.
-              </p>
-
-            </form>
-          </div>
-
-          <div className="mt-6 text-center">
-            <p className="text-[13px] text-slate-500">
-              ¿Preferís escribir directo?{' '}
-              <a href="mailto:TresArroyosSoft@gmail.com" className="font-semibold text-blue-600 hover:text-blue-800 underline underline-offset-2">
-                TresArroyosSoft@gmail.com
-              </a>
+    <section id="contacto" aria-labelledby="contact-heading" className="contact-section section-space">
+      <div className="page-container">
+        <div className="contact-layout">
+          <div className="contact-intro">
+            <p className="section-kicker">Empecemos por una conversación</p>
+            <h2 id="contact-heading" className="section-title">Hablemos de lo que necesitás.</h2>
+            <p className="section-intro">
+              Contanos tu idea, el problema a resolver o lo que querés mejorar. No hace falta que tengas la solución definida.
             </p>
+
+            <ul className="contact-direct">
+              <li><MapPin aria-hidden="true" /><span><strong>Cerca tuyo</strong>Tres Arroyos, Buenos Aires</span></li>
+              <li><MessageCircle aria-hidden="true" /><span><strong>Trato directo</strong>Hablás con quienes hacen el trabajo</span></li>
+              <li><Mail aria-hidden="true" /><span><strong>También por correo</strong><a href="mailto:TresArroyosSoft@gmail.com">TresArroyosSoft@gmail.com</a></span></li>
+            </ul>
           </div>
 
+          <form onSubmit={handleEmailSubmit} onInput={(event) => event.target.setCustomValidity('')} className="contact-form">
+            <div className="contact-form-heading">
+              <div><span>Tu consulta</span><strong>Contanos el contexto</strong></div>
+              <span>2 campos</span>
+            </div>
+
+            <div>
+              <label htmlFor="contact-name">Tu nombre o negocio</label>
+              <input id="contact-name" name="name" type="text" autoComplete="name" required maxLength={120} placeholder="Ej.: Laura / Ferretería Central" />
+            </div>
+
+            <div>
+              <label htmlFor="contact-message">¿Qué necesitás?</label>
+              <textarea id="contact-message" name="message" required rows={6} maxLength={3000} aria-describedby="contact-message-hint" placeholder="Me gustaría crear una web para mi negocio…" />
+              <p id="contact-message-hint">Con unas líneas alcanza para empezar.</p>
+            </div>
+
+            <button type="submit" className="button-primary w-full" aria-describedby="contact-email-hint">
+              Preparar correo <ArrowUpRight size={17} aria-hidden="true" />
+            </button>
+            <p id="contact-email-hint" className="contact-email-hint">
+              Se abrirá tu aplicación de correo con el mensaje listo para revisar y enviar.
+            </p>
+          </form>
         </div>
       </div>
     </section>

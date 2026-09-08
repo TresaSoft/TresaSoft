@@ -1,112 +1,111 @@
-import React, { useEffect } from 'react'
+﻿import { useId, useLayoutEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { X, CheckCircle2, ArrowRight, Users, Sparkles } from 'lucide-react'
+import { X, Check, ArrowRight, Users } from 'lucide-react'
 
 export default function ServiceDetailModal({ service, isOpen, onClose }) {
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose()
-    }
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('keydown', handleKeyDown)
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isOpen, onClose])
+  const dialogRef = useRef(null)
+  const titleId = useId()
+  const descriptionId = useId()
+  const isVisible = isOpen && Boolean(service)
 
-  if (!isOpen || !service) return null
+  useLayoutEffect(() => {
+    if (!isVisible) return
+
+    const dialog = dialogRef.current
+    const previousFocus = document.activeElement
+    const previousOverflow = document.body.style.overflow
+
+    document.body.style.overflow = 'hidden'
+    dialog.showModal()
+
+    return () => {
+      dialog.close()
+      document.body.style.overflow = previousOverflow
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+        previousFocus.focus({ preventScroll: true })
+      }
+    }
+  }, [isVisible])
+
+  if (!isVisible) return null
 
   const Icon = service.icon
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-service-title"
-      onClick={onClose}
+    <dialog
+      ref={dialogRef}
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      className="service-dialog m-auto max-h-[90dvh] w-[calc(100%_-_2rem)] max-w-[720px] overflow-hidden rounded-3xl border border-slate-200 bg-white p-0 text-slate-700 shadow-2xl backdrop:bg-slate-950/65 backdrop:backdrop-blur-sm"
+      onCancel={(event) => {
+        event.preventDefault()
+        onClose()
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
     >
-      <div
-        className="relative w-full max-w-2xl bg-white rounded-lg shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 bg-slate-50">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center">
-              <Icon className="w-4 h-4" />
-            </div>
-            <div>
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
-                {service.badge}
-              </span>
-              <h3 id="modal-service-title" className="text-lg font-extrabold text-[#0b192c] tracking-tight">
-                {service.title}
-              </h3>
-            </div>
-          </div>
-
+      <div className="service-dialog-layout flex max-h-[90dvh] flex-col">
+        <header className={`relative shrink-0 border-b px-5 pb-6 pt-7 sm:px-8 sm:pb-7 sm:pt-8 ${service.accentBg} ${service.accentBorder}`}>
           <button
             type="button"
             onClick={onClose}
             aria-label="Cerrar ventana de detalles"
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-md transition-colors focus-visible:outline-blue-600"
+            className="absolute right-3 top-3 inline-flex size-11 cursor-pointer items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-white hover:text-slate-900 sm:right-4 sm:top-4"
           >
-            <X className="w-5 h-5" />
+            <X className="size-5" aria-hidden="true" />
           </button>
-        </div>
 
-        {/* Modal Body */}
-        <div className="p-5 sm:p-6 overflow-y-auto space-y-5">
-          
-          {/* Main summary */}
-          <p className="text-[15px] text-slate-600 leading-relaxed">
+          <div className="mb-5 flex items-center gap-3 pr-10">
+            <div className={`flex size-11 shrink-0 items-center justify-center rounded-xl text-white ${service.accentIconBg}`}>
+              <Icon className="size-5" strokeWidth={1.7} aria-hidden="true" />
+            </div>
+            <span className={`text-xs font-semibold ${service.accentText}`}>
+              {service.badge}
+            </span>
+          </div>
+          <h3 id={titleId} className="max-w-[32rem] font-[family-name:var(--font-display)] text-[23px] leading-[1.35] font-semibold tracking-[-0.035em] text-[#0b192c] sm:text-[28px]">
+            {service.title}
+          </h3>
+        </header>
+
+        <div className="min-h-0 space-y-7 overflow-y-auto overscroll-contain px-5 py-6 sm:px-8 sm:py-7">
+          <p id={descriptionId} className="text-[15px] leading-[1.85] text-slate-600">
             {service.fullDescription || service.description}
           </p>
 
-          {/* Section: ¿Qué hacemos? */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-            <h4 className="text-[13px] font-bold text-[#0b192c] mb-2.5 flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>¿Qué incluye?</span>
-            </h4>
-            <ul className="space-y-2">
-              {service.features.map((item, index) => (
-                <li key={index} className="flex items-start gap-2.5 text-slate-600 text-[14px] leading-snug">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+          <div>
+            <h4 className="mb-4 text-base font-bold text-[#0b192c]">¿Qué incluye?</h4>
+            <ul className="space-y-4">
+              {service.features.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm leading-[1.75] text-slate-600">
+                  <span className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${service.accentBg} ${service.accentText}`}>
+                    <Check className="size-3.5" strokeWidth={2.3} aria-hidden="true" />
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Section: ¿Para quién es? */}
-          <div className="rounded-lg border border-blue-100 bg-blue-50/50 p-4">
-            <h4 className="text-[13px] font-bold text-blue-700 mb-1.5 flex items-center gap-2">
-              <Users className="w-3.5 h-3.5 text-blue-600" />
+          <div className={`rounded-2xl border p-5 ${service.accentBg} ${service.accentBorder}`}>
+            <h4 className={`mb-2 flex items-center gap-2 text-sm font-bold ${service.accentText}`}>
+              <Users className="size-4 shrink-0" aria-hidden="true" />
               <span>¿Para quién está pensado?</span>
             </h4>
-            <p className="text-[14px] text-slate-700 font-medium">
-              {service.targetAudience}
-            </p>
+            <p className="text-sm leading-[1.8] text-slate-700">{service.targetAudience}</p>
           </div>
 
-          {/* Real Work Benefit */}
-          <div className="border-l-[3px] border-blue-600 pl-3 py-0.5 text-slate-500 text-[14px] italic">
-            "{service.benefitQuote}"
-          </div>
-
+          <p className={`border-l-2 pl-4 text-sm leading-[1.85] text-slate-600 ${service.accentBorder}`}>
+            {service.benefitQuote}
+          </p>
         </div>
 
-        {/* Modal Footer / Action */}
-        <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+        <footer className="flex shrink-0 flex-col-reverse items-center justify-between gap-2 border-t border-slate-200 bg-slate-50 px-5 py-4 sm:flex-row sm:gap-4 sm:px-8 sm:py-5">
           <button
             type="button"
             onClick={onClose}
-            className="w-full sm:w-auto px-4 py-2 text-[13px] font-semibold text-slate-500 hover:text-slate-800 rounded-md transition-colors"
+            className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-200/60 hover:text-slate-900 sm:w-auto"
           >
             Cerrar
           </button>
@@ -114,15 +113,14 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           <a
             href="#contacto"
             onClick={onClose}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[13px] px-5 py-2.5 rounded-md transition-colors shadow-sm active:scale-[0.99]"
+            className={`inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition-colors sm:w-auto ${service.accentIconBg} ${service.accentIconHover}`}
           >
-            <span>Consultar</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Consultar por este servicio</span>
+            <ArrowRight className="size-4" aria-hidden="true" />
           </a>
-        </div>
-
+        </footer>
       </div>
-    </div>,
+    </dialog>,
     document.body
   )
 }
