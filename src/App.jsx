@@ -3,7 +3,6 @@ import Header from './header/Header.jsx'
 import HeroSection from './components/HeroSection.jsx'
 import AboutSection from './components/AboutSection.jsx'
 import ServicesSection from './components/ServicesSection.jsx'
-import WhyChooseUs from './components/WhyChooseUs.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import WhatsAppFloating from './components/WhatsAppFloating.jsx'
 import Footer from './footer/Footer.jsx'
@@ -17,7 +16,6 @@ function App() {
         <HeroSection />
         <AboutSection />
         <ServicesSection />
-        <WhyChooseUs />
         <ContactSection />
       </main>
       <Footer />

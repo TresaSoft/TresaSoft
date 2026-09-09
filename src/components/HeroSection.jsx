@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowRight, Code2, MapPin, Workflow, Wrench } from 'lucide-react'
+import { LogoEmblem } from './Logo.jsx'
 
 const capabilities = [
   { title: 'Software y web', detail: 'Herramientas hechas para tu forma de trabajar', icon: Code2, tone: 'blue' },
@@ -19,7 +20,7 @@ export default function HeroSection() {
           </p>
 
           <h1 id="hero-title" className="hero-title">
-            Tresa <span class="text-blue-400">Soft</span>
+            Tresa <span className="text-blue-400">Soft</span>
           </h1>
 
           <p className="hero-description">
@@ -47,7 +48,7 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-system-canvas">
-            <div className="hero-core" aria-hidden="true"><span>TS</span><i /></div>
+            <div className="hero-core" aria-hidden="true"><LogoEmblem className="hero-core-emblem" /><i /></div>
             <div className="hero-connectors" aria-hidden="true"><span /><span /><span /></div>
 
             <ul className="hero-capabilities">

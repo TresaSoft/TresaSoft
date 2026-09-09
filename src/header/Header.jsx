@@ -6,7 +6,6 @@ const navLinks = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Nosotros', href: '#nosotros' },
   { label: 'Servicios', href: '#servicios' },
-  { label: '¿Por qué TresaSoft?', href: '#beneficios' },
   { label: 'Contacto', href: '#contacto' },
 ]
 
