@@ -46,7 +46,7 @@ export default function Logo({
       <LogoEmblem className={sizeClasses.emblem} />
       <div className="flex flex-col leading-none">
         <span className={`font-extrabold tracking-tight ${sizeClasses.title} ${isLightText ? 'text-white' : 'text-[#0b192c]'}`}>
-          Tresa<span className={isLightText ? 'text-blue-400' : 'text-[#2563eb]'}>Soft</span>
+          Tresa<span className={isLightText ? 'text-[#38BDF8]' : 'text-[#0263E2]'}>Soft</span>
         </span>
         {showSubtitle && (
           <span className={`font-medium tracking-[0.025em] mt-1 ${sizeClasses.subtitle} ${isLightText ? 'text-slate-300' : 'text-slate-500'}`}>

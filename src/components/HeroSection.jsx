@@ -2,8 +2,8 @@ import { Code2, MapPin, Workflow, Wrench } from 'lucide-react'
 
 const capabilities = [
   { title: 'Software y web', detail: 'Herramientas hechas para tu forma de trabajar', icon: Code2, tone: 'blue' },
-  { title: 'Automatización', detail: 'Menos tareas repetidas, más tiempo disponible', icon: Workflow, tone: 'violet' },
-  { title: 'Soporte técnico', detail: 'Equipos rápidos, cuidados y listos para usar', icon: Wrench, tone: 'cyan' },
+  { title: 'Automatización', detail: 'Menos tareas repetidas, más tiempo disponible', icon: Workflow, tone: 'blue' },
+  { title: 'Soporte técnico', detail: 'Equipos rápidos, cuidados y listos para usar', icon: Wrench, tone: 'blue' },
 ]
 
 export default function HeroSection() {
@@ -21,7 +21,7 @@ export default function HeroSection() {
 
           <div className="hero-intro-row">
             <h1 id="hero-title" className="hero-title">
-              Tresa <span className="text-blue-400">Soft</span>
+              Tresa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0263E2] to-[#38BDF8]">Soft</span>
             </h1>
 
             <div className="hero-message">
