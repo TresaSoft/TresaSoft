@@ -1,5 +1,14 @@
-import React from 'react'
-import { ArrowUpRight, Cpu, Mail, MapPin, MessageCircle, ShieldCheck, Sparkles, Users, Wrench } from 'lucide-react'
+import React, { useState } from 'react'
+import { ArrowUpRight, ChevronDown, Cpu, Mail, Sparkles, Users, Wrench } from 'lucide-react'
+import { servicesData } from './ServicesSection.jsx'
+
+const contactEmail = 'TresArroyosSoft@gmail.com'
+const messageMaxLength = 3000
+const serviceLabels = {
+  'software-web': 'Software y web',
+  automatizacion: 'Automatización',
+  'soporte-tecnico': 'Soporte técnico',
+}
 
 const whyPoints = [
   {
@@ -25,6 +34,14 @@ const whyPoints = [
 ]
 
 export default function ContactSection() {
+  const [messageLength, setMessageLength] = useState(0)
+
+  const handleInput = (event) => {
+    const field = event.target
+    field.setCustomValidity('')
+    if (field.name === 'message') setMessageLength(field.value.length)
+  }
+
   const handleEmailSubmit = (event) => {
     event.preventDefault()
     const form = event.currentTarget
@@ -37,80 +54,90 @@ export default function ContactSection() {
 
     const name = nameField.value.trim()
     const message = messageField.value.trim()
-    const subject = `Consulta de ${name}`
-    const body = `Hola TresaSoft,\n\nMi nombre es ${name}.\n\nConsulta:\n${message}`
-    window.location.href = `mailto:TresArroyosSoft@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    const service = servicesData.find(({ id }) => id === form.elements.namedItem('service').value)
+    const subject = service ? `${service.title} - Consulta de ${name}` : `Consulta de ${name}`
+    const serviceLine = service ? `\nServicio: ${service.title}\n` : ''
+    const body = `Hola TresaSoft,\n\nMi nombre es ${name}.\n${serviceLine}\nConsulta:\n${message}`
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   return (
     <section id="contacto" aria-labelledby="contact-heading" className="contact-section section-space">
       <div className="page-container">
-        <div className="contact-layout">
-          {/* Columna Izquierda: Encabezado, Formulario y Contacto Directo */}
+        <div className="contact-shell">
           <div className="contact-main-col">
-            <div className="contact-intro">
-              <p className="section-kicker">Empecemos por una conversación</p>
-              <h2 id="contact-heading" className="section-title">Hablemos de lo que necesitás.</h2>
-              <p className="section-intro">
-                Contanos tu idea, el problema a resolver o lo que querés mejorar. No hace falta que tengas la solución definida.
-              </p>
+            <div className="contact-overview">
+              <div className="contact-intro">
+                <h2 id="contact-heading" className="section-title">Hablemos de lo que necesitás.</h2>
+                <p className="section-intro">
+                  Contanos tu idea, el problema a resolver o lo que querés mejorar. No hace falta que tengas la solución definida.
+                </p>
+              </div>
+
+              <ul className="contact-support" aria-label="Forma de trabajo">
+                {whyPoints.map(({ title, desc, icon: Icon }) => (
+                  <li key={title}>
+                    <span>
+                      <Icon size={20} strokeWidth={1.7} aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <form onSubmit={handleEmailSubmit} onInput={(event) => event.target.setCustomValidity('')} className="contact-form">
+            <form onSubmit={handleEmailSubmit} onInput={handleInput} className="contact-form" aria-labelledby="contact-form-title">
               <div className="contact-form-heading">
-                <div><span>Tu consulta</span><strong>Contanos el contexto</strong></div>
-                <span>2 campos</span>
+                <div>
+                  <h3 id="contact-form-title">Tu consulta</h3>
+                  <a className="contact-recipient" href={`mailto:${contactEmail}`}>
+                    <Mail size={15} strokeWidth={1.8} aria-hidden="true" />
+                    <span>{contactEmail}</span>
+                  </a>
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="contact-name">Tu nombre o negocio</label>
-                <input id="contact-name" name="name" type="text" autoComplete="name" required maxLength={120} placeholder="Ej.: Laura / Ferretería Central" />
-              </div>
+              <div className="contact-field-row">
+                <div className="contact-field">
+                  <label htmlFor="contact-name">Nombre o negocio</label>
+                  <input id="contact-name" name="name" type="text" autoComplete="name" required maxLength={120} placeholder="Ej.: Laura" />
+                </div>
 
-              <div>
-                <label htmlFor="contact-message">¿Qué necesitás?</label>
-                <textarea id="contact-message" name="message" required rows={5} maxLength={3000} aria-describedby="contact-message-hint" placeholder="Me gustaría crear una web para mi negocio…" />
-                <p id="contact-message-hint">Con unas líneas alcanza para empezar.</p>
-              </div>
-
-              <button type="submit" className="button-primary w-full" aria-describedby="contact-email-hint">
-                Preparar correo <ArrowUpRight size={17} aria-hidden="true" />
-              </button>
-              <p id="contact-email-hint" className="contact-email-hint">
-                Se abrirá tu aplicación de correo con el mensaje listo para revisar y enviar.
-              </p>
-            </form>
-
-            <ul className="contact-direct">
-              <li><MapPin aria-hidden="true" /><span><strong>Cerca tuyo</strong>Tres Arroyos, Buenos Aires</span></li>
-              <li><MessageCircle aria-hidden="true" /><span><strong>Trato directo</strong>Hablás con quienes hacen el trabajo</span></li>
-              <li><Mail aria-hidden="true" /><span><strong>También por correo</strong><a href="mailto:TresArroyosSoft@gmail.com">TresArroyosSoft@gmail.com</a></span></li>
-            </ul>
-          </div>
-
-          {/* Columna Derecha: Timeline con los valores y compromisos */}
-          <div id="beneficios" className="contact-timeline-col">
-            <div className="contact-timeline-header">
-              <p className="section-kicker">
-                <ShieldCheck size={16} aria-hidden="true" /> Nuestro compromiso
-              </p>
-              <h3 className="contact-timeline-title">Tecnología simple. Soporte humano.</h3>
-              <p className="contact-timeline-subtitle">
-                Un diagnóstico honesto, trato directo y soluciones reales para tu día a día en Tres Arroyos.
-              </p>
-            </div>
-
-            <ul className="why-principles">
-              {whyPoints.map(({ title, desc, icon: Icon }) => (
-                <li key={title}>
-                  <span className="why-node"><Icon size={20} strokeWidth={1.7} aria-hidden="true" /></span>
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{desc}</p>
+                <div className="contact-field">
+                  <label htmlFor="contact-service">Motivo <span className="contact-field-optional">Opcional</span></label>
+                  <div className="contact-select">
+                    <select id="contact-service" name="service" defaultValue="">
+                      <option value="">Consulta general</option>
+                      {servicesData.map(({ id, title }) => (
+                        <option key={id} value={id}>{serviceLabels[id] ?? title}</option>
+                      ))}
+                    </select>
+                    <ChevronDown size={17} aria-hidden="true" />
                   </div>
-                </li>
-              ))}
-            </ul>
+                </div>
+              </div>
+
+              <div className="contact-field contact-field-message">
+                <label htmlFor="contact-message">Mensaje</label>
+                <textarea id="contact-message" name="message" required rows={5} maxLength={messageMaxLength} aria-describedby="contact-message-hint" placeholder="Me gustaría crear una web para mi negocio…" />
+                <div className="contact-message-meta">
+                  <p id="contact-message-hint">Contanos qué necesitás resolver.</p>
+                  <span className="contact-message-count" aria-label={`${messageLength} de ${messageMaxLength} caracteres`}>{messageLength} / {messageMaxLength}</span>
+                </div>
+              </div>
+
+              <div className="contact-form-actions">
+                <p id="contact-email-hint" className="contact-email-hint">
+                  Revisá y enviá el mensaje desde tu aplicación de correo.
+                </p>
+                <button type="submit" className="button-primary" aria-describedby="contact-email-hint">
+                  Preparar consulta <ArrowUpRight size={18} aria-hidden="true" />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

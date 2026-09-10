@@ -19,7 +19,6 @@ export default function AboutSection() {
       <div className="page-container">
         <header className="about-heading">
           <h2 id="about-title" className="about-title">Nuestra forma de trabajar</h2>
-          <p>Menos vueltas. Más claridad, acompañamiento y resultados que aportan valor.</p>
         </header>
 
         <ul className="about-values">
