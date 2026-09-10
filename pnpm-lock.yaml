@@ -9,27 +9,27 @@ importers:
   .:
     dependencies:
       '@tailwindcss/vite':
-        specifier: latest
+        specifier: 4.3.3
         version: 4.3.3(vite@8.2.2(jiti@2.7.0))
-      '@vitejs/plugin-react':
-        specifier: latest
-        version: 6.1.1(vite@8.2.2(jiti@2.7.0))
       lucide-react:
         specifier: ^1.40.0
         version: 1.40.0(react@19.2.8)
       react:
-        specifier: latest
+        specifier: 19.2.8
         version: 19.2.8
       react-dom:
-        specifier: latest
+        specifier: 19.2.8
         version: 19.2.8(react@19.2.8)
       tailwindcss:
-        specifier: latest
+        specifier: 4.3.3
         version: 4.3.3
       vite:
-        specifier: latest
+        specifier: 8.2.2
         version: 8.2.2(jiti@2.7.0)
     devDependencies:
+      '@vitejs/plugin-react':
+        specifier: 6.1.1
+        version: 6.1.1(vite@8.2.2(jiti@2.7.0))
       '@rolldown/binding-win32-x64-msvc':
         specifier: ^1.2.7
         version: 1.2.7
