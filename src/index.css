@@ -2,8 +2,8 @@
 
 @layer base {
   :root {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-display: 'Sora', 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Space Grotesk', 'Manrope', sans-serif;
     --color-navy: #081a33;
     --color-navy-deep: #041225;
     --color-blue: #0263E2;
@@ -85,10 +85,9 @@
   .brand-emblem { position: relative; display: block; flex-shrink: 0; overflow: hidden; border-radius: 50%; background: var(--color-navy); }
   .brand-emblem img { position: absolute; left: 50%; top: 50%; width: 280%; height: 280%; max-width: none; transform: translate(-50%, -38.1%); }
 
-  /* Hero: the memorable element, built from the circuit language in the TresaSoft mark. */
   .hero-section { position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; display: flex; align-items: center; padding-block: 132px 72px; background: var(--color-navy-deep); color: #fff; }
   .hero-section::before { content: ''; position: absolute; z-index: -1; width: 760px; height: 760px; right: -240px; top: -340px; border-radius: 50%; background: radial-gradient(circle, rgba(2, 99, 226, 0.25), transparent 68%); }
-  .hero-section::after { content: ''; position: absolute; z-index: 1; left: 52%; top: 23%; width: 30px; height: 30px; border: 0; background: linear-gradient(135deg, #dff8ff, #38BDF8); clip-path: polygon(50% 0, 57% 42%, 100% 50%, 57% 58%, 50% 100%, 43% 58%, 0 50%, 43% 42%); opacity: .45; filter: drop-shadow(0 0 10px #38BDF8); animation: hero-star-twinkle 7s ease-in-out infinite; pointer-events: none; }
+  .hero-section::after { content: ''; position: absolute; z-index: 1; left: 52%; top: 23%; width: 30px; height: 30px; border: 0; background: linear-gradient(135deg, #dff8ff, #38BDF8); clip-path: polygon(50% 0, 57% 42%, 100% 50%, 57% 58%, 50% 100%, 43% 58%, 0 50%, 43% 42%); opacity: 0; filter: drop-shadow(0 0 12px #38BDF8); animation: hero-star-teleport 12s ease-in-out infinite; pointer-events: none; }
   .hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
   .hero-particles::before {
     content: '';
@@ -381,12 +380,29 @@
   to { opacity: 1; transform: scale(1) rotate(0); }
 }
 
-@keyframes hero-star-twinkle {
-  0% { transform: translate3d(0, 0, 0) scale(0.88) rotate(0deg); opacity: 0.3; filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.4)); }
-  25% { transform: translate3d(10px, -8px, 0) scale(1.18) rotate(12deg); opacity: 0.9; filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
-  50% { transform: translate3d(-5px, 10px, 0) scale(0.92) rotate(-6deg); opacity: 0.38; filter: drop-shadow(0 0 7px rgba(56, 189, 248, 0.5)); }
-  75% { transform: translate3d(-12px, -5px, 0) scale(1.22) rotate(18deg); opacity: 0.95; filter: drop-shadow(0 0 18px rgba(56, 189, 248, 1)); }
-  100% { transform: translate3d(0, 0, 0) scale(0.88) rotate(0deg); opacity: 0.3; filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.4)); }
+@keyframes hero-star-teleport {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.2) rotate(-30deg); filter: drop-shadow(0 0 0 transparent); }
+  3% { opacity: 0.95; transform: translate3d(0, 0, 0) scale(1.1) rotate(0deg); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
+  10% { opacity: 0.75; transform: translate3d(6px, -4px, 0) scale(0.95) rotate(12deg); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.7)); }
+  18% { opacity: 0.95; transform: translate3d(10px, -6px, 0) scale(1.15) rotate(24deg); filter: drop-shadow(0 0 18px rgba(56, 189, 248, 1)); }
+  22% { opacity: 0; transform: translate3d(12px, -8px, 0) scale(0.2) rotate(45deg); filter: drop-shadow(0 0 0 transparent); }
+  24.9% { opacity: 0; transform: translate3d(-140px, 80px, 0) scale(0.2) rotate(-30deg); filter: drop-shadow(0 0 0 transparent); }
+  28% { opacity: 0.95; transform: translate3d(-140px, 80px, 0) scale(1.1) rotate(0deg); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
+  35% { opacity: 0.75; transform: translate3d(-135px, 84px, 0) scale(0.95) rotate(-12deg); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.7)); }
+  43% { opacity: 0.95; transform: translate3d(-130px, 88px, 0) scale(1.15) rotate(-24deg); filter: drop-shadow(0 0 18px rgba(56, 189, 248, 1)); }
+  47% { opacity: 0; transform: translate3d(-128px, 90px, 0) scale(0.2) rotate(-45deg); filter: drop-shadow(0 0 0 transparent); }
+  49.9% { opacity: 0; transform: translate3d(90px, 120px, 0) scale(0.2) rotate(30deg); filter: drop-shadow(0 0 0 transparent); }
+  53% { opacity: 0.95; transform: translate3d(90px, 120px, 0) scale(1.1) rotate(0deg); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
+  60% { opacity: 0.75; transform: translate3d(94px, 116px, 0) scale(0.95) rotate(12deg); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.7)); }
+  68% { opacity: 0.95; transform: translate3d(98px, 112px, 0) scale(1.15) rotate(24deg); filter: drop-shadow(0 0 18px rgba(56, 189, 248, 1)); }
+  72% { opacity: 0; transform: translate3d(100px, 110px, 0) scale(0.2) rotate(45deg); filter: drop-shadow(0 0 0 transparent); }
+  74.9% { opacity: 0; transform: translate3d(-60px, 170px, 0) scale(0.2) rotate(-25deg); filter: drop-shadow(0 0 0 transparent); }
+  78% { opacity: 0.95; transform: translate3d(-60px, 170px, 0) scale(1.1) rotate(0deg); filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.95)); }
+  85% { opacity: 0.75; transform: translate3d(-56px, 173px, 0) scale(0.95) rotate(-10deg); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.7)); }
+  93% { opacity: 0.95; transform: translate3d(-52px, 176px, 0) scale(1.15) rotate(-20deg); filter: drop-shadow(0 0 18px rgba(56, 189, 248, 1)); }
+  97% { opacity: 0; transform: translate3d(-50px, 178px, 0) scale(0.2) rotate(-40deg); filter: drop-shadow(0 0 0 transparent); }
+  99.9% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.2) rotate(-30deg); filter: drop-shadow(0 0 0 transparent); }
+  100% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.2) rotate(-30deg); filter: drop-shadow(0 0 0 transparent); }
 }
 
 @keyframes hero-dots-twinkle-1 {
