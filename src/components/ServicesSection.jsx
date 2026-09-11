@@ -107,9 +107,6 @@ export default function ServicesSection() {
             <p className="section-kicker">Soluciones TresaSoft</p>
             <h2 id="services-title" className="section-title">Lo que necesitás, sin vueltas.</h2>
           </div>
-          <p className="section-intro">
-            Soluciones concretas, explicadas en tu idioma y adaptadas al tamaño de tu proyecto.
-          </p>
         </div>
 
         <div className="services-list">

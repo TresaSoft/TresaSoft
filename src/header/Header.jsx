@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowRight, Menu, X } from 'lucide-react'
 import Logo from '../components/Logo.jsx'
 
 const navLinks = [
@@ -12,8 +12,32 @@ const navLinks = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
+  const [isPastHeroHalf, setIsPastHeroHalf] = useState(false)
   const headerRef = useRef(null)
   const menuButtonRef = useRef(null)
+
+  const isSolid = isPastHeroHalf || isMobileMenuOpen
+
+  useEffect(() => {
+    const hero = document.getElementById('inicio')
+    if (!hero) return
+
+    const updateHeader = () => {
+      const threshold = hero.offsetTop + hero.offsetHeight / 2
+      const nextValue = window.scrollY >= threshold
+      setIsPastHeroHalf((currentValue) => (currentValue === nextValue ? currentValue : nextValue))
+    }
+
+    const resizeObserver = new ResizeObserver(updateHeader)
+    resizeObserver.observe(hero)
+    window.addEventListener('scroll', updateHeader, { passive: true })
+    updateHeader()
+
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('scroll', updateHeader)
+    }
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -64,15 +88,15 @@ export default function Header() {
       className={`nav-link ${href === '#contacto' ? 'nav-link-contact' : ''}`}
     >
       {label}
-      {href === '#contacto' ? <ArrowUpRight size={16} aria-hidden="true" /> : null}
+      {href === '#contacto' ? <ArrowRight size={16} aria-hidden="true" /> : null}
     </a>
   )
 
   return (
-    <header ref={headerRef} className="site-header site-header-solid">
+    <header ref={headerRef} className={`site-header ${isSolid ? 'site-header-solid' : 'site-header-transparent'}`}>
       <div className="page-container flex min-h-20 items-center justify-between gap-6">
         <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-md" aria-label="TresaSoft, volver al inicio">
-          <Logo size="md" variant="dark" />
+          <Logo size="md" variant={isSolid ? 'dark' : 'light'} />
         </a>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
           {navLinks.map(renderLink)}

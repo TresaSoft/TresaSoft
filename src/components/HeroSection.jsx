@@ -10,6 +10,7 @@ export default function HeroSection() {
   return (
     <section id="inicio" className="hero-section" aria-labelledby="hero-title">
       <div className="hero-blueprint" aria-hidden="true" />
+      <div className="hero-particles" aria-hidden="true" />
       <div className="hero-meteors" aria-hidden="true"><span /><span /><span /></div>
 
       <div className="page-container hero-layout">

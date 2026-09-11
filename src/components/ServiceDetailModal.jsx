@@ -77,9 +77,12 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
 
         {/* Modal Content: Clean white body with list items without boxes */}
         <div className="min-h-0 overflow-y-auto overscroll-contain bg-white px-6 py-6 sm:px-8 sm:py-7">
-          <h4 className="mb-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-            ¿Qué incluye este servicio?
-          </h4>
+          <div className="mb-5 flex items-center gap-2.5 pb-3 border-b border-slate-200">
+            <span className="inline-block h-5 w-1.5 rounded-full bg-[#0263E2]" aria-hidden="true" />
+            <h4 className="font-[family-name:var(--font-display)] text-base sm:text-lg font-bold text-slate-900 tracking-tight">
+              ¿Qué incluye este servicio?
+            </h4>
+          </div>
           
           <ul className="space-y-3.5">
             {service.features.map((item) => (
