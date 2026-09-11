@@ -20,5 +20,11 @@
   "devDependencies": {
     "@vitejs/plugin-react": "6.1.1",
     "@rolldown/binding-win32-x64-msvc": "^1.2.7"
+  },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["win32", "linux"],
+      "cpu": ["x64", "arm64"]
+    }
   }
 }
