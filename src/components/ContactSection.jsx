@@ -91,10 +91,13 @@ export default function ContactSection() {
 
             <form onSubmit={handleEmailSubmit} onInput={handleInput} className="contact-form" aria-labelledby="contact-form-title">
               <div className="contact-form-heading">
-                <div>
+                <div className="contact-title-row">
                   <h3 id="contact-form-title">Tu consulta</h3>
-                  <a className="contact-recipient" href={`mailto:${contactEmail}`}>
-                    <Mail size={15} strokeWidth={1.8} aria-hidden="true" />
+                </div>
+                <div className="contact-email-row">
+                  <span className="contact-email-label">Escribinos directamente:</span>
+                  <a className="contact-recipient" href={`mailto:${contactEmail}`} aria-label={`Enviar correo a ${contactEmail}`}>
+                    <Mail size={14} strokeWidth={2} aria-hidden="true" />
                     <span>{contactEmail}</span>
                   </a>
                 </div>
