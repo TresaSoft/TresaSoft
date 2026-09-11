@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="page-container pb-24 pt-14 sm:pb-8 lg:pt-20">
         <div className="grid grid-cols-1 items-start gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-12">
           <div className="sm:col-span-2 lg:col-span-5">
-            <a href="#inicio" aria-label="TresaSoft, volver al inicio" className="inline-block rounded-lg focus-visible:outline-[#0263E2]">
+            <a href="#inicio" aria-label="TresaSoft, volver al inicio" className="inline-block rounded-md focus-visible:outline-[#0263E2]">
               <Logo variant="light" size="md" />
             </a>
             <p className="mt-6 text-base font-semibold text-white">Tecnología que impulsa tu negocio.</p>

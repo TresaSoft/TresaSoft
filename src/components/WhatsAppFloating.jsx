@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { MessageCircle, ArrowUpRight, X } from 'lucide-react'
 
 const contacts = [
@@ -50,13 +50,13 @@ export default function WhatsAppFloating() {
       className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6"
     >
       {isOpen ? (
-        <div id="whatsapp-contacts" role="dialog" aria-labelledby="whatsapp-heading" aria-describedby="whatsapp-description" className="max-h-[calc(100dvh-7rem)] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_16px_56px_-8px_rgba(11,25,44,0.24)]">
+        <div id="whatsapp-contacts" role="dialog" aria-labelledby="whatsapp-heading" aria-describedby="whatsapp-description" className="max-h-[calc(100dvh-7rem)] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto overscroll-contain rounded-xl border border-slate-200 bg-white p-5 shadow-[0_16px_56px_-8px_rgba(11,25,44,0.24)]">
           <div className="flex items-start justify-between gap-2 border-b border-slate-100 pb-4">
             <div>
               <h2 id="whatsapp-heading" className="text-base font-bold text-[#0b192c]">Hablemos por WhatsApp</h2>
               <p id="whatsapp-description" className="mt-1.5 text-sm leading-relaxed text-slate-600">Elegí con quién querés conversar.</p>
             </div>
-            <button type="button" onClick={closeAndRestoreFocus} className="-mr-2 -mt-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800" aria-label="Cerrar opciones de WhatsApp">
+            <button type="button" onClick={closeAndRestoreFocus} className="-mr-2 -mt-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800" aria-label="Cerrar opciones de WhatsApp">
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
@@ -70,7 +70,7 @@ export default function WhatsAppFloating() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeAndRestoreFocus}
-                className="group flex min-h-[68px] items-center gap-3 rounded-xl border border-slate-200 px-3 py-3 transition-colors hover:border-emerald-200 hover:bg-emerald-50"
+                className="group flex min-h-[68px] items-center gap-3 rounded-lg border border-slate-200 px-3 py-3 transition-colors hover:border-emerald-200 hover:bg-emerald-50"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-base font-bold text-emerald-800" aria-hidden="true">{contact.name[0]}</span>
                 <span className="flex-1 text-sm font-bold text-[#0b192c]">{contact.name}</span>

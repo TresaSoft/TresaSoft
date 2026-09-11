@@ -1,4 +1,4 @@
-﻿import { useId, useLayoutEffect, useRef } from 'react'
+import { useId, useLayoutEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { X, Check, ArrowRight, Users } from 'lucide-react'
 
@@ -36,7 +36,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
       ref={dialogRef}
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
-      className="service-dialog m-auto max-h-[90dvh] w-[calc(100%_-_2rem)] max-w-[720px] overflow-hidden rounded-3xl border border-slate-200 bg-white p-0 text-slate-700 shadow-2xl backdrop:bg-slate-950/65 backdrop:backdrop-blur-sm"
+      className="service-dialog m-auto max-h-[90dvh] w-[calc(100%_-_2rem)] max-w-[720px] overflow-hidden rounded-xl border border-slate-200 bg-white p-0 text-slate-700 shadow-2xl backdrop:bg-slate-950/65 backdrop:backdrop-blur-sm"
       onCancel={(event) => {
         event.preventDefault()
         onClose()
@@ -57,7 +57,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           </button>
 
           <div className="mb-5 flex items-center gap-3 pr-10">
-            <div className={`flex size-11 shrink-0 items-center justify-center rounded-xl text-white ${service.accentIconBg}`}>
+            <div className={`flex size-11 shrink-0 items-center justify-center rounded-lg text-white ${service.accentIconBg}`}>
               <Icon className="size-5" strokeWidth={1.7} aria-hidden="true" />
             </div>
             <span className={`text-xs font-semibold ${service.accentText}`}>
@@ -88,7 +88,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
             </ul>
           </div>
 
-          <div className={`rounded-2xl border p-5 ${service.accentBg} ${service.accentBorder}`}>
+          <div className={`rounded-lg border p-5 ${service.accentBg} ${service.accentBorder}`}>
             <h4 className={`mb-2 flex items-center gap-2 text-sm font-bold ${service.accentText}`}>
               <Users className="size-4 shrink-0" aria-hidden="true" />
               <span>¿Para quién está pensado?</span>
@@ -105,7 +105,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-200/60 hover:text-slate-900 sm:w-auto"
+            className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-200/60 hover:text-slate-900 sm:w-auto"
           >
             Cerrar
           </button>
@@ -113,7 +113,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
           <a
             href="#contacto"
             onClick={onClose}
-            className={`inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition-colors sm:w-auto ${service.accentIconBg} ${service.accentIconHover}`}
+            className={`inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-lg px-6 py-3.5 text-sm font-semibold text-white transition-colors sm:w-auto ${service.accentIconBg} ${service.accentIconHover}`}
           >
             <span>Consultar por este servicio</span>
             <ArrowRight className="size-4" aria-hidden="true" />

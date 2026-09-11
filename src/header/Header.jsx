@@ -95,7 +95,7 @@ export default function Header() {
   return (
     <header ref={headerRef} className={`site-header ${isSolid ? 'site-header-solid' : 'site-header-transparent'}`}>
       <div className="page-container flex min-h-20 items-center justify-between gap-6">
-        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg" aria-label="TresaSoft, volver al inicio">
+        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-md" aria-label="TresaSoft, volver al inicio">
           <Logo size="md" variant={isSolid ? 'dark' : 'light'} />
         </a>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
