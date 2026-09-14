@@ -23,7 +23,7 @@ export default function AboutSection() {
 
         <ul className="about-values">
           {values.map(({ title, description }) => (
-            <li key={title}>
+            <li key={title} className="about-value-item">
               <h3>{title}</h3>
               <p>{description}</p>
             </li>

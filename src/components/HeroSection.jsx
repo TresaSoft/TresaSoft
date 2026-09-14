@@ -15,10 +15,11 @@ export default function HeroSection() {
 
       <div className="page-container hero-layout">
         <div className="hero-copy">
-          <p className="hero-location">
-            <MapPin size={15} strokeWidth={1.8} aria-hidden="true" />
-            Tres Arroyos, Buenos Aires
-          </p>
+          <div className="hero-location-badge">
+            <span className="hero-location-dot" aria-hidden="true" />
+            <MapPin size={14} strokeWidth={2} aria-hidden="true" />
+            <span>Tres Arroyos, Buenos Aires</span>
+          </div>
 
           <div className="hero-intro-row">
             <h1 id="hero-title" className="hero-title">
