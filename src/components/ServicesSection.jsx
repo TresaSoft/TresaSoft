@@ -12,8 +12,8 @@ export default function ServicesSection() {
       <div className="page-container">
         <div className="services-heading">
           <div>
-            <p className="section-kicker">Soluciones TresaSoft</p>
-            <h2 id="services-title" className="section-title">Lo que necesitás, sin vueltas.</h2>
+            <p className="section-kicker">Servicios</p>
+            <h2 id="services-title" className="section-title">Desarrollo y soporte informático</h2>
           </div>
         </div>
 
@@ -40,17 +40,17 @@ export default function ServicesSection() {
                       type="button"
                       onClick={() => setSelectedService(service)}
                       aria-haspopup="dialog"
-                      aria-label={`Ver más información sobre ${service.title}`}
+                      aria-label={`Ver detalles de ${service.title}`}
                       className="service-row-action group/action"
                     >
-                      <span>Ver más información</span>
+                      <span>Ver detalles del servicio</span>
                       <ArrowRight size={18} aria-hidden="true" className="transition-transform duration-200 ease-out group-hover/action:translate-x-1" />
                     </button>
                   </div>
                 </div>
 
                 <div className="service-row-detail">
-                  <div className="service-detail-kicker">¿Qué incluye este servicio?</div>
+                  <div className="service-detail-kicker">Áreas de trabajo</div>
                   <ul>
                     {service.summaryList.map((bullet) => (
                       <li key={bullet}>
@@ -68,7 +68,7 @@ export default function ServicesSection() {
         </div>
 
         <p className="services-help">
-          ¿No sabés por dónde empezar? <a href="#contacto">Contanos qué querés resolver</a> y te orientamos.
+          Cada proyecto tiene sus particularidades. <a href="#contacto">Consultanos por tu caso</a>.
         </p>
       </div>
 

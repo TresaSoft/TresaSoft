@@ -29,9 +29,9 @@ export default function Footer() {
             <a href="#inicio" aria-label="TresaSoft, volver al inicio" className="inline-block rounded-md focus-visible:outline-[#0263E2]">
               <Logo variant="light" size="md" />
             </a>
-            <p className="mt-6 text-base font-semibold text-white">Tecnología que impulsa tu negocio.</p>
+            <p className="mt-6 text-base font-semibold text-white">Desarrollo y soporte informático.</p>
             <p className="mt-3 max-w-[350px] text-sm leading-7 text-slate-400">
-              Soluciones tecnológicas pensadas para hacer más simple tu trabajo. Desarrollo de software y web, automatización de procesos y soporte técnico.
+              Software, sitios web y automatización para comercios, profesionales y empresas. Asistencia técnica para equipos de trabajo y de uso personal.
             </p>
             <p className="mt-5 flex items-start gap-2.5 text-sm leading-6 text-slate-300">
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-[#38BDF8]" aria-hidden="true" />

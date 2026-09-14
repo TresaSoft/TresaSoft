@@ -5,30 +5,30 @@ import { servicesData } from '../data/servicesData.js'
 const contactEmail = 'TresArroyosSoft@gmail.com'
 const messageMaxLength = 3000
 const serviceLabels = {
-  'software-web': 'Software y páginas web',
-  automatizacion: 'Automatización de tareas',
-  'soporte-tecnico': 'Soporte y reparación técnica',
+  'software-web': 'Software y desarrollo web',
+  automatizacion: 'Automatización de procesos',
+  'soporte-tecnico': 'Soporte técnico informático',
 }
 
 const whyPoints = [
   {
-    title: 'Soluciones a tu medida',
-    desc: 'Conversamos sobre tu caso y te ofrecemos justo lo que necesitás, sin complicaciones ni costos de más.',
+    title: 'Evaluación de tu consulta',
+    desc: 'Revisamos tu necesidad y las herramientas disponibles para proponer un trabajo con un objetivo concreto.',
     icon: Sparkles,
   },
   {
-    title: 'Trato directo y personal',
-    desc: 'Hablás directamente con nosotros (Juan o Mateo). Sin intermediarios ni respuestas automáticas.',
+    title: 'Contacto con el equipo',
+    desc: 'Juan y Mateo atienden las consultas y llevan adelante el trabajo. Podés hablar con ellos durante el proyecto.',
     icon: Users,
   },
   {
-    title: 'Explicaciones claras y con paciencia',
-    desc: 'Te explicamos todo sin palabras raras ni tecnicismos difíciles. Te acompañamos para que uses todo con total confianza.',
+    title: 'Orientación técnica',
+    desc: 'Te explicamos las recomendaciones y respondemos tus dudas para que puedas decidir con información.',
     icon: Cpu,
   },
   {
-    title: 'Acompañamiento y soporte continuo',
-    desc: 'Seguimos a tu disposición después de terminar el trabajo para ayudarte con cualquier duda.',
+    title: 'Asistencia después de la entrega',
+    desc: 'Podés consultarnos sobre el uso de las herramientas y las necesidades de mantenimiento que surjan.',
     icon: Wrench,
   },
 ]
@@ -48,8 +48,8 @@ export default function ContactSection() {
     const nameField = form.elements.namedItem('name')
     const messageField = form.elements.namedItem('message')
 
-    nameField.setCustomValidity(nameField.value.trim() ? '' : 'Por favor, escribí tu nombre o el de tu negocio.')
-    messageField.setCustomValidity(messageField.value.trim() ? '' : 'Por favor, contanos brevemente qué necesitás.')
+    nameField.setCustomValidity(nameField.value.trim() ? '' : 'Ingresá tu nombre o el de tu negocio.')
+    messageField.setCustomValidity(messageField.value.trim() ? '' : 'Describí el motivo de tu consulta.')
     if (!form.reportValidity()) return
 
     const name = nameField.value.trim()
@@ -67,10 +67,10 @@ export default function ContactSection() {
         {/* Encabezado centrado de la sección */}
         <div className="contact-header-block">
           <h2 id="contact-heading" className="section-title contact-title">
-            Hablemos de lo que necesitás
+            Consultanos por tu proyecto
           </h2>
           <p className="section-intro contact-intro">
-            Completá el formulario o consultanos lo que haga falta. Te respondemos con claridad, paciencia y sin vueltas.
+            Contanos qué necesitás desarrollar, qué proceso querés mejorar o qué problema tiene tu equipo.
           </p>
         </div>
 
@@ -79,10 +79,10 @@ export default function ContactSection() {
             {/* Columna izquierda: Información clara y atención cercana */}
             <div className="contact-trust-wrapper">
               <div className="contact-trust-header">
-                <span className="contact-trust-kicker">Atención cercana</span>
-                <h3>¿Por qué comunicarte con nosotros?</h3>
+                <span className="contact-trust-kicker">El equipo de TresaSoft</span>
+                <h3>Una consulta es el punto de partida</h3>
                 <p className="contact-trust-intro">
-                  Sabemos que los temas de computación y sistemas a veces generan dudas. Nuestro objetivo es hacerte las cosas fáciles y resolver tus problemas sin rodeos.
+                  No hace falta que tengas una solución definida. Conocer tu actividad y el problema que querés resolver nos permite evaluar cómo ayudarte.
                 </p>
               </div>
               <div className="contact-trust-grid">
@@ -104,16 +104,16 @@ export default function ContactSection() {
             <div className="contact-form-wrapper">
               <form onSubmit={handleEmailSubmit} onInput={handleInput} className="contact-form" aria-labelledby="contact-form-title">
                 <div className="contact-form-heading">
-                  <h3 id="contact-form-title">Envianos tu consulta</h3>
+                  <h3 id="contact-form-title">Consulta por correo</h3>
                   <p className="contact-form-subtext">
-                    Escribí tus datos acá abajo y te responderemos a la brevedad.
+                    Dejanos el contexto de tu consulta para poder evaluarla.
                   </p>
                 </div>
 
                 <div className="contact-field-row">
                   <div className="contact-field">
                     <label htmlFor="contact-name">
-                      <span>Tu nombre o negocio</span>
+                      <span>Nombre o negocio</span>
                       <span className="contact-required-mark" aria-hidden="true">*</span>
                     </label>
                     <input
@@ -146,7 +146,7 @@ export default function ContactSection() {
 
                 <div className="contact-field contact-field-message">
                   <label htmlFor="contact-message">
-                    <span>¿En qué te podemos ayudar?</span>
+                    <span>Detalle de la consulta</span>
                     <span className="contact-required-mark" aria-hidden="true">*</span>
                   </label>
                   <textarea
@@ -156,10 +156,10 @@ export default function ContactSection() {
                     rows={5}
                     maxLength={messageMaxLength}
                     aria-describedby="contact-message-hint"
-                    placeholder="Contanos qué problema tenés o qué te gustaría mejorar en tu negocio o computadora..."
+                    placeholder="Ej.: Llevo el stock en Excel y necesito registrar las ventas y actualizar las cantidades."
                   />
                   <div className="contact-message-meta">
-                    <p id="contact-message-hint">Escribí con tranquilidad y con tus propias palabras.</p>
+                    <p id="contact-message-hint">Incluí las herramientas o el equipo que usás.</p>
                     <span className="contact-message-count" aria-label={`${messageLength} de ${messageMaxLength} caracteres`}>
                       {messageLength} / {messageMaxLength}
                     </span>
@@ -168,13 +168,13 @@ export default function ContactSection() {
 
                 <div className="contact-form-actions">
                   <button type="submit" className="button-primary contact-submit-button group/submit" aria-describedby="contact-email-hint">
-                    <span>Enviar mi consulta</span>
+                    <span>Continuar en mi correo</span>
                     <ArrowRight size={20} aria-hidden="true" className="transition-transform duration-200 ease-out group-hover/submit:translate-x-1" />
                   </button>
                   <div className="contact-submit-footer">
                     <ShieldCheck size={18} className="text-emerald-700 shrink-0" aria-hidden="true" />
                     <p id="contact-email-hint" className="contact-email-hint">
-                      Al presionar, se abrirá tu aplicación de correo habitual para enviar el mensaje.
+                      Se abrirá tu aplicación de correo con el mensaje preparado. Revisalo y enviá la consulta desde allí.
                     </p>
                   </div>
                 </div>

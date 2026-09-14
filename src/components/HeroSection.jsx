@@ -1,9 +1,9 @@
 import { Code2, MapPin, Workflow, Wrench } from 'lucide-react'
 
 const capabilities = [
-  { title: 'Software y web', detail: 'Herramientas hechas para tu forma de trabajar', icon: Code2, tone: 'blue' },
-  { title: 'Automatización', detail: 'Menos tareas repetidas, más tiempo disponible', icon: Workflow, tone: 'blue' },
-  { title: 'Soporte técnico', detail: 'Equipos rápidos, cuidados y listos para usar', icon: Wrench, tone: 'blue' },
+  { title: 'Software y web', detail: 'Sistemas de gestión y sitios web a medida', icon: Code2, tone: 'blue' },
+  { title: 'Automatización', detail: 'Integración de datos, planillas y procesos', icon: Workflow, tone: 'blue' },
+  { title: 'Soporte técnico', detail: 'Diagnóstico, reparación y mantenimiento', icon: Wrench, tone: 'blue' },
 ]
 
 export default function HeroSection() {
@@ -28,7 +28,7 @@ export default function HeroSection() {
 
             <div className="hero-message">
               <p className="hero-description">
-                Creamos software a medida, automatizamos procesos y resolvemos problemas técnicos con un trato cercano y directo.
+                Desarrollamos software y sitios web, automatizamos tareas y brindamos soporte informático a comercios, profesionales y empresas.
               </p>
             </div>
           </div>

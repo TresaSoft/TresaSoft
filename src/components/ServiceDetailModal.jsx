@@ -79,7 +79,7 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
         <div className="min-h-0 overflow-y-auto overscroll-contain bg-white px-6 py-6 sm:px-8 sm:py-7">
           <div className="mb-5 pb-3 border-b border-[#c8ddf6]">
             <h4 className="font-[family-name:var(--font-display)] text-lg font-bold text-slate-900 tracking-tight">
-              ¿Qué incluye este servicio?
+              Trabajos que realizamos
             </h4>
           </div>
           

@@ -1,15 +1,15 @@
 const values = [
   {
-    title: 'Enfoque real',
-    description: 'Empezamos por entender qué necesitás resolver hoy y qué puede crecer mañana.',
+    title: 'Análisis del trabajo',
+    description: 'Revisamos cómo trabajás, qué herramientas usás y dónde aparecen las dificultades.',
   },
   {
     title: 'Trato directo',
-    description: 'Hablás con las mismas personas que piensan, diseñan y desarrollan tu solución.',
+    description: 'Conversás con quienes llevan adelante el proyecto, desde la primera consulta hasta la entrega.',
   },
   {
-    title: 'Decisiones claras',
-    description: 'Te explicamos cada alternativa con honestidad, sin complejidad ni costos innecesarios.',
+    title: 'Criterio técnico',
+    description: 'Evaluamos las alternativas y te explicamos qué conviene hacer, por qué y qué implica.',
   },
 ]
 
