@@ -219,7 +219,11 @@
   .hero-capability-cyan { --capability-accent: #38BDF8; }
 
   /* Transición entre Hero y cuerpo claro */
-  .about-section { position: relative; background: #F7F9FC; }
+  .about-section {
+    position: relative;
+    background: #F7F9FC;
+    padding-top: clamp(104px, 10vw, 128px);
+  }
   .about-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
   .about-values li, .about-value-item { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; min-height: 180px; padding: 34px clamp(20px, 3vw, 34px); border-radius: 12px; background: #ffffff; border: 1.5px solid #c8ddf6; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04); transition: border-color 200ms ease, transform 200ms ease; }
   .about-value-item:hover { border-color: #8ec2f7; transform: translateY(-2px); }
