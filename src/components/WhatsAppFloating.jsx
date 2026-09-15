@@ -1,13 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { MessageCircle, ArrowUpRight, X } from 'lucide-react'
-
-const contacts = [
-  { name: 'Mateo', number: '5492983388094' },
-  { name: 'Juan', number: '5492983600680' },
-]
+import { whatsappContacts } from '../data/whatsappContacts.js'
 
 export default function WhatsAppFloating() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
   const containerRef = useRef(null)
   const triggerRef = useRef(null)
   const firstContactRef = useRef(null)
@@ -16,6 +13,18 @@ export default function WhatsAppFloating() {
     setIsOpen(false)
     triggerRef.current?.focus()
   }
+
+  useEffect(() => {
+    const hero = document.getElementById('inicio')
+    if (!hero) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsHeroVisible(entry.isIntersecting)
+      if (entry.isIntersecting) setIsOpen(false)
+    })
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     if (!isOpen) return
@@ -41,6 +50,8 @@ export default function WhatsAppFloating() {
     }
   }, [isOpen])
 
+  if (isHeroVisible) return null
+
   return (
     <div
       ref={containerRef}
@@ -62,7 +73,7 @@ export default function WhatsAppFloating() {
           </div>
 
           <div className="mt-3 space-y-2">
-            {contacts.map((contact, index) => (
+            {whatsappContacts.map((contact, index) => (
               <a
                 key={contact.name}
                 ref={index === 0 ? firstContactRef : undefined}

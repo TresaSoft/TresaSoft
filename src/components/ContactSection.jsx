@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { ArrowRight, ChevronDown, Cpu, ShieldCheck, Sparkles, Users, Wrench } from 'lucide-react'
+import { ArrowRight, ChevronDown, Cpu, MessageCircle, ShieldCheck, Sparkles, Users, Wrench } from 'lucide-react'
 import { servicesData } from '../data/servicesData.js'
+import { whatsappContacts } from '../data/whatsappContacts.js'
 
 const contactEmail = 'TresArroyosSoft@gmail.com'
 const messageMaxLength = 3000
@@ -72,6 +73,24 @@ export default function ContactSection() {
           <p className="section-intro contact-intro">
             Contanos qué necesitás desarrollar, qué proceso querés mejorar o qué problema tiene tu equipo.
           </p>
+        </div>
+
+        <div className="contact-whatsapp-direct">
+          <p className="contact-whatsapp-title">Consultá directo por WhatsApp</p>
+          <div className="contact-whatsapp-options">
+            {whatsappContacts.map(({ name, number }) => (
+              <a
+                key={number}
+                href={`https://wa.me/${number}?text=${encodeURIComponent(`Hola ${name}, quiero hacer una consulta desde la web de TresaSoft.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-whatsapp-button"
+              >
+                <MessageCircle size={18} aria-hidden="true" />
+                Escribir a {name}
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="contact-shell">

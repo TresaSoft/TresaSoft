@@ -5,7 +5,6 @@ import { X, Check, ArrowRight } from 'lucide-react'
 export default function ServiceDetailModal({ service, isOpen, onClose }) {
   const dialogRef = useRef(null)
   const titleId = useId()
-  const descriptionId = useId()
   const isVisible = isOpen && Boolean(service)
 
   useLayoutEffect(() => {
@@ -35,7 +34,6 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
     <dialog
       ref={dialogRef}
       aria-labelledby={titleId}
-      aria-describedby={descriptionId}
       className="service-dialog m-auto max-h-[90dvh] w-[calc(100%_-_2rem)] max-w-[620px] overflow-hidden rounded-xl border border-[#c8ddf6] bg-white p-0 text-slate-700 shadow-2xl backdrop:bg-slate-950/60 backdrop:backdrop-blur-sm"
       onCancel={(event) => {
         event.preventDefault()
@@ -68,9 +66,6 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
               <h3 id={titleId} className="mt-1 font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight text-slate-900">
                 {service.title}
               </h3>
-              <p id={descriptionId} className="mt-2 text-base leading-relaxed text-slate-700 font-medium">
-                {service.fullDescription || service.description}
-              </p>
             </div>
           </div>
         </header>

@@ -97,7 +97,7 @@
   .brand-emblem { position: relative; display: block; flex-shrink: 0; overflow: hidden; border-radius: 50%; background: var(--color-navy); }
   .brand-emblem img { position: absolute; left: 50%; top: 50%; width: 280%; height: 280%; max-width: none; transform: translate(-50%, -38.1%); }
 
-  .hero-section { position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; display: flex; align-items: center; padding-block: 132px 72px; background: var(--color-navy-deep); color: #fff; }
+  .hero-section { position: relative; isolation: isolate; height: 100vh; height: 100dvh; min-height: 0; display: flex; align-items: safe center; overflow-x: hidden; overflow-y: auto; padding-block: 132px 72px; background: var(--color-navy-deep); color: #fff; }
   .hero-section::before { content: ''; position: absolute; z-index: -1; width: 760px; height: 760px; right: -240px; top: -340px; border-radius: 50%; background: radial-gradient(circle, rgba(2, 99, 226, 0.25), transparent 68%); }
   .hero-section::after { content: ''; position: absolute; z-index: 1; left: 52%; top: 23%; width: 30px; height: 30px; border: 0; background: linear-gradient(135deg, #dff8ff, #38BDF8); clip-path: polygon(50% 0, 57% 42%, 100% 50%, 57% 58%, 50% 100%, 43% 58%, 0 50%, 43% 42%); opacity: 0; filter: drop-shadow(0 0 12px #38BDF8); animation: hero-star-teleport 12s ease-in-out infinite; pointer-events: none; }
   .hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
@@ -166,7 +166,7 @@
   .hero-meteors span:nth-child(1) { left: 8%; top: 18%; animation-delay: -7s; }
   .hero-meteors span:nth-child(2) { left: 58%; top: 43%; width: clamp(90px, 10vw, 150px); animation-delay: -2s; animation-duration: 13s; }
   .hero-meteors span:nth-child(3) { left: 34%; top: 72%; width: clamp(80px, 9vw, 130px); animation-delay: -10s; animation-duration: 15s; }
-  .hero-layout { display: grid; height: 100%; grid-template-rows: minmax(0, 1fr) auto; align-items: center; gap: clamp(34px, 6vh, 58px); }
+  .hero-layout { display: grid; min-width: 0; height: 100%; grid-template-rows: minmax(0, 1fr) auto; align-items: center; gap: clamp(64px, 8vh, 88px); }
   .hero-copy { display: flex; flex-direction: column; align-items: center; text-align: center; animation: hero-arrive 620ms cubic-bezier(.2,.7,.3,1) both; }
   .hero-location-badge {
     display: inline-flex;
@@ -568,6 +568,11 @@
     line-height: 1.5;
     text-align: center;
   }
+  .contact-whatsapp-direct { display: none; }
+  .contact-whatsapp-title { color: #0b1523; font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+  .contact-whatsapp-options { display: grid; gap: 10px; }
+  .contact-whatsapp-button { display: flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; border-radius: 8px; padding: 12px 16px; background: #047857; color: white; font-size: 15px; font-weight: 700; text-align: center; transition: background-color 180ms ease; }
+  .contact-whatsapp-button:hover { background: #065f46; }
 
   @container contact-form (min-width: 460px) {
     .contact-field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
@@ -579,16 +584,22 @@
   }
 
   @media (min-width: 1024px) {
-    .hero-section { height: 100svh; min-height: 0; padding-block: calc(var(--header-height) + 24px) 24px; }
+    .hero-section { padding-block: calc(var(--header-height) + 24px) 24px; }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1199px) and (pointer: coarse) {
+    .hero-section { align-items: safe flex-end; padding-bottom: clamp(24px, 4vh, 48px); }
+    .hero-layout { display: flex; height: auto; flex-direction: column; align-items: center; gap: clamp(64px, 8vh, 80px); }
+    .hero-copy { width: 100%; max-width: 760px; }
   }
 
   @media (max-width: 1023px) {
     .menu-toggle { display: inline-flex; }
     .hero-section::after { left: auto; right: clamp(28px, 8vw, 72px); top: 108px; width: 24px; height: 24px; opacity: .4; }
     .hero-blueprint::after { display: none; }
-    .hero-section { min-height: auto; padding-block: 132px 84px; }
-    .hero-layout { display: flex; height: auto; flex-direction: column; align-items: stretch; gap: 62px; }
-    .hero-copy { max-width: 760px; }
+    .hero-section { align-items: safe flex-end; padding-block: 132px clamp(24px, 4vh, 48px); }
+    .hero-layout { display: flex; height: auto; flex-direction: column; align-items: center; gap: clamp(64px, 8vh, 80px); }
+    .hero-copy { width: 100%; max-width: 760px; }
     .hero-intro-row { gap: 28px; }
     .hero-message { max-width: 680px; }
     .hero-system { max-width: none; }
@@ -606,15 +617,18 @@
   @media (max-width: 639px) {
     .section-space { padding-block: 64px; }
     .section-title { font-size: clamp(2rem, 8vw, 2.5rem); }
-    .hero-section { min-height: 100svh; padding-block: 118px 66px; }
-    .hero-layout { gap: 48px; }
+    .hero-section { padding-block: calc(var(--header-height) + 12px) 20px; }
+    .hero-layout { justify-content: center; gap: clamp(40px, 7vh, 56px); }
+    .hero-copy, .hero-intro-row, .hero-message { width: 100%; min-width: 0; }
     .hero-location { font-size: 12px; }
-    .hero-intro-row { gap: 24px; margin-top: 23px; }
-    .hero-title { font-size: clamp(2.8rem, 13.2vw, 4rem); line-height: 1.02; }
-    .hero-description { font-size: 16px; line-height: 1.78; }
-    .hero-capabilities { grid-template-columns: 1fr; gap: 26px; }
-    .hero-capability { gap: 14px; }
-    .hero-capability-icon { width: 48px; height: 48px; border-radius: 8px; }
+    .hero-intro-row { gap: 14px; margin-top: 16px; }
+    .hero-title { font-size: clamp(2.6rem, 12vw, 3.5rem); line-height: 1.02; }
+    .hero-description { font-size: 16px; line-height: 1.5; }
+    .hero-capabilities { width: max-content; max-width: 100%; grid-template-columns: 1fr; gap: 10px; margin-inline: auto; }
+    .hero-capability { flex-direction: row; gap: 12px; text-align: left; }
+    .hero-capability-icon { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 8px; }
+    .hero-capability h3 { font-size: 16px; }
+    .hero-capability p { display: none; }
     .about-heading > p { margin-top: 10px; }
     .about-values { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
     .about-values li, .about-value-item { min-height: 0; padding: 24px 20px; }
@@ -626,6 +640,7 @@
     .service-row-detail { padding: 26px 20px; }
     .services-help { text-align: left; }
     .contact-header-block { margin-bottom: 24px; }
+    .contact-whatsapp-direct { display: grid; gap: 16px; margin-bottom: 24px; border: 1px solid #c8ddf6; border-radius: 12px; background: white; padding: 20px; }
     .contact-main-col { padding-block: 10px; gap: 24px; }
     .contact-trust-wrapper { padding: 22px 18px; border-radius: 12px; }
     .contact-trust-grid { gap: 12px; }
