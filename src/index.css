@@ -227,7 +227,10 @@
   .about-values p { max-width: 340px; margin: 12px auto 0; color: #1e293b; font-size: 16.5px; line-height: 1.7; text-wrap: pretty; text-align: center; font-weight: 450; }
 
   /* Servicios: Celdas distintivas con borde suave acorde a la empresa */
-  .services-section { background: #F7F9FC; }
+  .services-section {
+    background: #F7F9FC;
+    padding-top: clamp(104px, 10vw, 128px);
+  }
   .services-heading { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .services-intro { max-width: 58ch; margin: 12px auto 0; }
   .services-list { display: flex; flex-direction: column; gap: 24px; margin-top: 32px; }
