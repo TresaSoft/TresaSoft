@@ -11,10 +11,10 @@ export default function ServicesSection() {
     <section id="servicios" aria-labelledby="services-title" className="services-section section-space">
       <div className="page-container">
         <div className="services-heading">
-          <div>
-            <p className="section-kicker">Servicios</p>
-            <h2 id="services-title" className="section-title">Desarrollo y soporte informático</h2>
-          </div>
+          <h2 id="services-title" className="section-title">Soluciones digitales y soporte técnico</h2>
+          <p className="section-intro services-intro">
+            Creamos software y sitios web, automatizamos tareas y brindamos asistencia para tus computadoras.
+          </p>
         </div>
 
         <div className="services-list">

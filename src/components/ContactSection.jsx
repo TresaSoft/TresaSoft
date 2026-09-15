@@ -66,7 +66,7 @@ export default function ContactSection() {
       <div className="page-container">
         {/* Encabezado centrado de la sección */}
         <div className="contact-header-block">
-          <h2 id="contact-heading" className="section-title contact-title">
+          <h2 id="contact-heading" className="section-title">
             Consultanos por tu proyecto
           </h2>
           <p className="section-intro contact-intro">

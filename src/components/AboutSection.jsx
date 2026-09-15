@@ -18,7 +18,7 @@ export default function AboutSection() {
     <section id="nosotros" aria-labelledby="about-title" className="about-section section-space">
       <div className="page-container">
         <header className="about-heading">
-          <h2 id="about-title" className="about-title">Nuestra forma de trabajar</h2>
+          <h2 id="about-title" className="section-title">Nuestra forma de trabajar</h2>
         </header>
 
         <ul className="about-values">
