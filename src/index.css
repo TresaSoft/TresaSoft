@@ -588,18 +588,18 @@
   }
 
   @media (min-width: 1024px) and (max-width: 1199px) and (pointer: coarse) {
-    .hero-section { align-items: safe flex-end; padding-bottom: clamp(24px, 4vh, 48px); }
-    .hero-layout { display: flex; height: auto; flex-direction: column; align-items: center; gap: clamp(64px, 8vh, 80px); }
-    .hero-copy { width: 100%; max-width: 760px; }
+    .hero-section { align-items: safe center; padding-bottom: clamp(24px, 4vh, 48px); }
+    .hero-layout { display: grid; height: 100%; grid-template-rows: minmax(0, 1fr) auto; align-items: center; gap: clamp(64px, 8vh, 80px); }
+    .hero-copy { width: 100%; max-width: 760px; translate: 0 clamp(48px, 7vh, 72px); }
   }
 
   @media (max-width: 1023px) {
     .menu-toggle { display: inline-flex; }
     .hero-section::after { left: auto; right: clamp(28px, 8vw, 72px); top: 108px; width: 24px; height: 24px; opacity: .4; }
     .hero-blueprint::after { display: none; }
-    .hero-section { align-items: safe flex-end; padding-block: 132px clamp(24px, 4vh, 48px); }
-    .hero-layout { display: flex; height: auto; flex-direction: column; align-items: center; gap: clamp(64px, 8vh, 80px); }
-    .hero-copy { width: 100%; max-width: 760px; }
+    .hero-section { align-items: safe center; padding-block: 132px clamp(24px, 4vh, 48px); }
+    .hero-layout { display: grid; height: 100%; grid-template-rows: minmax(0, 1fr) auto; align-items: center; gap: clamp(64px, 8vh, 80px); }
+    .hero-copy { width: 100%; max-width: 760px; translate: 0 clamp(48px, 7vh, 72px); }
     .hero-intro-row { gap: 28px; }
     .hero-message { max-width: 680px; }
     .hero-system { max-width: none; }
@@ -618,7 +618,7 @@
     .section-space { padding-block: 64px; }
     .section-title { font-size: clamp(2rem, 8vw, 2.5rem); }
     .hero-section { padding-block: calc(var(--header-height) + 12px) 20px; }
-    .hero-layout { justify-content: center; gap: clamp(40px, 7vh, 56px); }
+    .hero-layout { gap: clamp(40px, 7vh, 56px); }
     .hero-copy, .hero-intro-row, .hero-message { width: 100%; min-width: 0; }
     .hero-location { font-size: 12px; }
     .hero-intro-row { gap: 14px; margin-top: 16px; }
