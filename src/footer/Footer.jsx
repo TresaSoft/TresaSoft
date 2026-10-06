@@ -16,7 +16,6 @@ const navigation = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#nosotros', label: 'Nosotros' },
   { href: '#servicios', label: 'Servicios' },
-  { href: '#beneficios', label: '¿Por qué TresaSoft?' },
   { href: '#contacto', label: 'Contacto' },
 ]
 

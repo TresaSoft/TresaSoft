@@ -38,11 +38,13 @@ export default function HeroSection() {
           <ul className="hero-capabilities">
             {capabilities.map(({ title, detail, icon: Icon, tone }) => (
               <li key={title} className={`hero-capability hero-capability-${tone}`}>
-                <span className="hero-capability-icon"><Icon size={24} strokeWidth={1.5} aria-hidden="true" /></span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{detail}</p>
-                </div>
+                <a href="#servicios" className="hero-capability-link" aria-label={`Conocer más sobre ${title}`}>
+                  <span className="hero-capability-icon"><Icon size={22} strokeWidth={1.75} aria-hidden="true" /></span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{detail}</p>
+                  </div>
+                </a>
               </li>
             ))}
           </ul>

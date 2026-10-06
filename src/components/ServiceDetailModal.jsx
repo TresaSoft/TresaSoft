@@ -91,11 +91,20 @@ export default function ServiceDetailModal({ service, isOpen, onClose }) {
         </div>
 
         {/* Modal Footer: Action button only */}
-        <footer className="flex shrink-0 items-center justify-end border-t border-[#c8ddf6] bg-[#f8fafc] px-6 py-4 sm:px-8">
+        <footer className="flex shrink-0 items-center justify-end border-t border-[#e2e8f0] bg-[#f8fafc] px-6 py-4 sm:px-8">
           <a
             href="#contacto"
-            onClick={onClose}
-            className="group/modal-btn inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-[#0263E2] px-7 py-3 text-base font-bold text-white shadow-sm transition-all duration-150 hover:bg-[#0050BD] active:scale-[0.98] sm:w-auto"
+            onClick={() => {
+              onClose()
+              setTimeout(() => {
+                const select = document.getElementById('contact-service')
+                if (select && service?.id) {
+                  select.value = service.id
+                  select.dispatchEvent(new Event('change', { bubbles: true }))
+                }
+              }, 50)
+            }}
+            className="group/modal-btn inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#0263E2] px-7 py-3 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all duration-150 hover:bg-[#0050BD] hover:shadow-lg hover:shadow-blue-600/30 active:scale-[0.98] sm:w-auto"
           >
             <span>Consultar por este servicio</span>
             <ArrowRight className="size-5 transition-transform duration-200 ease-out group-hover/modal-btn:translate-x-1" aria-hidden="true" />

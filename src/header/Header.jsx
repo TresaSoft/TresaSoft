@@ -79,28 +79,45 @@ export default function Header() {
     }
   }, [isMobileMenuOpen])
 
-  const renderLink = ({ label, href }) => (
-    <a
-      key={href}
-      href={href}
-      onClick={() => setIsMobileMenuOpen(false)}
-      aria-current={activeSection === href.slice(1) ? 'location' : undefined}
-      className={`nav-link ${href === '#contacto' ? 'nav-link-contact' : ''}`}
-    >
-      {label}
-      {href === '#contacto' ? <ArrowRight size={16} aria-hidden="true" /> : null}
-    </a>
-  )
+  const mainLinks = navLinks.filter(item => item.href !== '#contacto')
 
   return (
     <header ref={headerRef} className={`site-header ${isSolid ? 'site-header-solid' : 'site-header-transparent'}`}>
-      <div className="page-container flex min-h-20 items-center justify-between gap-6">
-        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-md" aria-label="TresaSoft, volver al inicio">
+      <div className="page-container flex min-h-20 items-center justify-between gap-4">
+        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-md focus-visible:outline-[#0263E2]" aria-label="TresaSoft, volver al inicio">
           <Logo size="md" variant={isSolid ? 'dark' : 'light'} />
         </a>
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
-          {navLinks.map(renderLink)}
+
+        {/* Desktop Central Navigation Pill */}
+        <nav className="nav-capsule hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
+          {mainLinks.map(({ label, href }) => {
+            const isActive = activeSection === href.slice(1)
+            return (
+              <a
+                key={href}
+                href={href}
+                aria-current={isActive ? 'location' : undefined}
+                className={`nav-link ${isActive ? 'nav-link-active' : ''}`}
+              >
+                <span>{label}</span>
+              </a>
+            )
+          })}
         </nav>
+
+        {/* Desktop Contact CTA */}
+        <div className="hidden items-center lg:flex">
+          <a
+            href="#contacto"
+            className="nav-cta-btn group/cta"
+            aria-label="Ir a sección de contacto"
+          >
+            <span>Contacto</span>
+            <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-200 ease-out group-hover/cta:translate-x-0.5" />
+          </a>
+        </div>
+
+        {/* Mobile menu toggle button */}
         <button
           ref={menuButtonRef}
           type="button"
@@ -110,17 +127,44 @@ export default function Header() {
           aria-expanded={isMobileMenuOpen}
           aria-label={isMobileMenuOpen ? 'Cerrar menú principal' : 'Abrir menú principal'}
         >
-          {isMobileMenuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
+          {isMobileMenuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
       </div>
+
+      {/* Mobile Navigation Dropdown */}
       <nav
         id="mobile-navigation"
         className="mobile-navigation lg:hidden"
         aria-label="Navegación móvil"
         hidden={!isMobileMenuOpen}
       >
-        <div className="page-container flex flex-col gap-1 py-4">
-          {navLinks.map(renderLink)}
+        <div className="mobile-nav-panel">
+          <div className="flex flex-col gap-1">
+            {mainLinks.map(({ label, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-current={isActive ? 'location' : undefined}
+                  className={`mobile-nav-link ${isActive ? 'mobile-nav-link-active' : ''}`}
+                >
+                  <span>{label}</span>
+                </a>
+              )
+            })}
+          </div>
+          <div className="pt-2 mt-2 border-t border-slate-100">
+            <a
+              href="#contacto"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mobile-nav-cta"
+            >
+              <span>Contacto</span>
+              <ArrowRight size={16} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </nav>
     </header>
