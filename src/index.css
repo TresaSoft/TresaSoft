@@ -6117,7 +6117,7 @@
   }
   .hero-mark {
     position: absolute;
-    top: 50%;
+    top: calc(50% + var(--header-height, 80px) / 2);
     left: 50%;
     width: clamp(200px, 30vw, 380px);
     height: auto;
@@ -6131,6 +6131,11 @@
   @keyframes hero-mark-drift {
     0%, 100% { transform: translate(-50%, -50%) rotate(-3deg) scale(1); }
     50% { transform: translate(-50%, calc(-50% - 10px)) rotate(3deg) scale(1.04); }
+  }
+
+  /* ---- v61 — Contenido del home centrado en el alto útil (descontando el header), igual que el logo de fondo ---- */
+  .hero-layout {
+    padding-top: var(--header-height);
   }
 
   @media (max-width: 1023px) {
