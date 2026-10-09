@@ -9,6 +9,8 @@ const navLinks = [
   { label: 'Contacto', href: '#contacto' },
 ]
 
+const mainLinks = navLinks.filter(({ href }) => href !== '#contacto')
+
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
@@ -23,7 +25,8 @@ export default function Header() {
     if (!hero) return
 
     const updateHeader = () => {
-      const threshold = hero.offsetTop + hero.offsetHeight / 2
+      // El header pasa a blanco cuando ya se recorrió el 80 % del home
+      const threshold = hero.offsetTop + hero.offsetHeight * 0.8
       const nextValue = window.scrollY >= threshold
       setIsPastHeroHalf((currentValue) => (currentValue === nextValue ? currentValue : nextValue))
     }
@@ -79,12 +82,10 @@ export default function Header() {
     }
   }, [isMobileMenuOpen])
 
-  const mainLinks = navLinks.filter(item => item.href !== '#contacto')
-
   return (
-    <header ref={headerRef} className={`site-header ${isSolid ? 'site-header-solid' : 'site-header-transparent'}`}>
-      <div className="page-container flex min-h-20 items-center justify-between gap-4">
-        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="rounded-md focus-visible:outline-[#0263E2]" aria-label="TresaSoft, volver al inicio">
+    <header ref={headerRef} className={`site-header ${isSolid ? 'site-header-solid' : 'site-header-dark'}`}>
+      <div className="page-container header-inner">
+        <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)} className="header-brand" aria-label="TresaSoft, volver al inicio">
           <Logo size="md" variant={isSolid ? 'dark' : 'light'} />
         </a>
 
@@ -106,11 +107,12 @@ export default function Header() {
         </nav>
 
         {/* Desktop Contact CTA */}
-        <div className="hidden items-center lg:flex">
+        <div className="header-actions hidden items-center lg:flex">
           <a
             href="#contacto"
             className="nav-cta-btn group/cta"
             aria-label="Ir a sección de contacto"
+            aria-current={activeSection === 'contacto' ? 'location' : undefined}
           >
             <span>Contacto</span>
             <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-200 ease-out group-hover/cta:translate-x-0.5" />
@@ -160,6 +162,7 @@ export default function Header() {
               href="#contacto"
               onClick={() => setIsMobileMenuOpen(false)}
               className="mobile-nav-cta"
+              aria-current={activeSection === 'contacto' ? 'location' : undefined}
             >
               <span>Contacto</span>
               <ArrowRight size={16} aria-hidden="true" />

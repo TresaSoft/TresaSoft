@@ -45,8 +45,8 @@ export default function Logo({
     <div className={`flex items-center gap-3 select-none ${className}`}>
       <LogoEmblem className={sizeClasses.emblem} />
       <div className="flex flex-col leading-none">
-        <span className={`font-extrabold tracking-tight ${sizeClasses.title} ${isLightText ? 'text-white' : 'text-[#0b192c]'}`}>
-          Tresa<span className={isLightText ? 'text-[#38BDF8]' : 'text-[#0263E2]'}>Soft</span>
+        <span className={`font-extrabold tracking-tight ${sizeClasses.title} ${isLightText ? 'text-white' : 'text-[#091c21]'}`}>
+          Tresa<span className={isLightText ? 'text-[#4AA3B8]' : 'text-[#176477]'}>Soft</span>
         </span>
         {showSubtitle && (
           <span className={`font-medium tracking-[0.025em] mt-1 ${sizeClasses.subtitle} ${isLightText ? 'text-slate-300' : 'text-slate-500'}`}>

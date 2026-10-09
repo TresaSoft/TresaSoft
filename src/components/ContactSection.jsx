@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowRight, ChevronDown, Cpu, MessageCircle, ShieldCheck, Sparkles, Users, Wrench } from 'lucide-react'
+import { ArrowRight, ChevronDown, Mail, MapPin, MessageCircle } from 'lucide-react'
 import { servicesData } from '../data/servicesData.js'
 import { whatsappContacts } from '../data/whatsappContacts.js'
 
@@ -11,28 +11,19 @@ const serviceLabels = {
   'soporte-tecnico': 'Soporte técnico informático',
 }
 
-const whyPoints = [
-  {
-    title: 'Evaluación de tu consulta',
-    desc: 'Revisamos tu necesidad y las herramientas disponibles para proponer un trabajo con un objetivo concreto.',
-    icon: Sparkles,
-  },
-  {
-    title: 'Contacto con el equipo',
-    desc: 'Juan y Mateo atienden las consultas y llevan adelante el trabajo. Podés hablar con ellos durante el proyecto.',
-    icon: Users,
-  },
-  {
-    title: 'Orientación técnica',
-    desc: 'Te explicamos las recomendaciones y respondemos tus dudas para que puedas decidir con información.',
-    icon: Cpu,
-  },
-  {
-    title: 'Asistencia después de la entrega',
-    desc: 'Podés consultarnos sobre el uso de las herramientas y las necesidades de mantenimiento que surjan.',
-    icon: Wrench,
-  },
-]
+// lucide-react no trae íconos de marcas: mismo trazo (2 px, puntas redondeadas).
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  )
+}
+
+// 5492983600680 -> +54 9 2983 60-0680
+const formatPhone = (n) => '+' + n.slice(0, 2) + ' ' + n[2] + ' ' + n.slice(3, 7) + ' ' + n.slice(7, 9) + '-' + n.slice(9)
 
 export default function ContactSection() {
   const [messageLength, setMessageLength] = useState(0)
@@ -63,146 +54,132 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contacto" aria-labelledby="contact-heading" className="contact-section section-space">
+    <section id="contacto" aria-labelledby="contact-heading" className="cx-section section-space">
       <div className="page-container">
-        {/* Encabezado centrado de la sección */}
-        <div className="contact-header-block">
-          <h2 id="contact-heading" className="section-title">
-            Consultanos por tu proyecto
-          </h2>
-          <p className="section-intro contact-intro">
-            Contanos qué necesitás desarrollar, qué proceso querés mejorar o qué problema tiene tu equipo.
-          </p>
+        <div className="services-heading cx-heading">
+          <p className="section-eyebrow">Contacto</p>
+          <h2 id="contact-heading" className="section-title">Consultanos por tu proyecto</h2>
+          <p className="cx-lead">Escribinos y te respondemos a la brevedad.</p>
         </div>
 
-        <div className="contact-whatsapp-direct">
-          <p className="contact-whatsapp-title">Consultá directo por WhatsApp</p>
-          <div className="contact-whatsapp-options">
-            {whatsappContacts.map(({ name, number }) => (
-              <a
-                key={number}
-                href={`https://wa.me/${number}?text=${encodeURIComponent(`Hola ${name}, quiero hacer una consulta desde la web de TresaSoft.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-whatsapp-button"
-              >
-                <MessageCircle size={18} aria-hidden="true" />
-                Escribir a {name}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="contact-shell">
-          <div className="contact-main-col">
-            {/* Columna izquierda: Información clara y atención cercana */}
-            <div className="contact-trust-wrapper">
-              <div className="contact-trust-header">
-                <span className="contact-trust-kicker">El equipo de TresaSoft</span>
-                <h3>Una consulta es el punto de partida</h3>
-                <p className="contact-trust-intro">
-                  No hace falta que tengas una solución definida. Conocer tu actividad y el problema que querés resolver nos permite evaluar cómo ayudarte.
-                </p>
-              </div>
-              <div className="contact-trust-grid">
-                {whyPoints.map(({ title, desc, icon: Icon }) => (
-                  <div key={title} className="contact-trust-card">
-                    <div className="contact-trust-icon">
-                      <Icon size={22} strokeWidth={2} aria-hidden="true" />
-                    </div>
-                    <div className="contact-trust-info">
-                      <h4>{title}</h4>
-                      <p>{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+        <div className="cx">
+          {/* Izquierda: medios de contacto directo */}
+          <div className="cx-info">
+            <p className="cx-label">Escribinos por WhatsApp</p>
+            <div className="cx-wa">
+              {whatsappContacts.map(({ name, number }) => (
+                <a
+                  key={number}
+                  href={`https://wa.me/${number}?text=${encodeURIComponent(`Hola ${name}, quiero hacer una consulta desde la web de TresaSoft.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={22} aria-hidden="true" />
+                  <span className="cx-wa-text">
+                    <span className="cx-wa-name">Escribir a {name}</span>
+                    <span className="cx-wa-number">{formatPhone(number)}</span>
+                  </span>
+                  <span className="sr-only">(se abre WhatsApp en una pestaña nueva)</span>
+                </a>
+              ))}
             </div>
 
-            {/* Columna derecha: Formulario con alto contraste y letras grandes */}
-            <div className="contact-form-wrapper">
-              <form onSubmit={handleEmailSubmit} onInput={handleInput} className="contact-form" aria-labelledby="contact-form-title">
-                <div className="contact-form-heading">
-                  <h3 id="contact-form-title">Consulta por correo</h3>
-                  <p className="contact-form-subtext">
-                    Dejanos el contexto de tu consulta para poder evaluarla.
-                  </p>
-                </div>
+            <p className="cx-label cx-label-sep">Otros medios</p>
+            <ul className="cx-links">
+              <li>
+                <a href={`mailto:${contactEmail}`}>
+                  <Mail size={18} aria-hidden="true" />
+                  <span>{contactEmail}</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/tresasoft" target="_blank" rel="noopener noreferrer">
+                  <InstagramIcon />
+                  <span>@tresasoft</span>
+                  <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                </a>
+              </li>
+              <li>
+                <span>
+                  <MapPin size={18} aria-hidden="true" />
+                  <span>Tres Arroyos, Buenos Aires</span>
+                </span>
+              </li>
+            </ul>
+          </div>
 
-                <div className="contact-field-row">
-                  <div className="contact-field">
-                    <label htmlFor="contact-name">
-                      <span>Nombre o negocio</span>
-                      <span className="contact-required-mark" aria-hidden="true">*</span>
-                    </label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      type="text"
-                      autoComplete="name"
-                      required
-                      maxLength={120}
-                      placeholder="Ej.: Juan Gómez"
-                    />
-                  </div>
+          {/* Formulario por correo */}
+          <div className="cx-formcol">
+            <form onSubmit={handleEmailSubmit} onInput={handleInput} className="contact-form cx-form" aria-labelledby="contact-form-title">
+              <h3 id="contact-form-title" className="cx-form-title">Contactanos por correo</h3>
 
-                  <div className="contact-field">
-                    <label htmlFor="contact-service">
-                      <span>Motivo de la consulta</span>
-                      <span className="contact-field-optional">Opcional</span>
-                    </label>
-                    <div className="contact-select">
-                      <select id="contact-service" name="service" defaultValue="">
-                        <option value="">Consulta general</option>
-                        {servicesData.map(({ id, title }) => (
-                          <option key={id} value={id}>{serviceLabels[id] ?? title}</option>
-                        ))}
-                      </select>
-                      <ChevronDown size={19} aria-hidden="true" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="contact-field contact-field-message">
-                  <label htmlFor="contact-message">
-                    <span>Detalle de la consulta</span>
+              <div className="contact-field-row">
+                <div className="contact-field">
+                  <label htmlFor="contact-name">
+                    <span>Nombre o negocio</span>
                     <span className="contact-required-mark" aria-hidden="true">*</span>
                   </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
                     required
-                    rows={5}
-                    maxLength={messageMaxLength}
-                    aria-describedby="contact-message-hint"
-                    placeholder="Ej.: Llevo el stock en Excel y necesito registrar las ventas y actualizar las cantidades."
+                    maxLength={120}
+                    placeholder="Ej.: Juan Gómez"
                   />
-                  <div className="contact-message-meta">
-                    <p id="contact-message-hint">Incluí las herramientas o el equipo que usás.</p>
-                    <span className="contact-message-count" aria-label={`${messageLength} de ${messageMaxLength} caracteres`}>
-                      {messageLength} / {messageMaxLength}
-                    </span>
-                  </div>
                 </div>
 
-                <div className="contact-form-actions">
-                  <button type="submit" className="button-primary contact-submit-button group/submit" aria-describedby="contact-email-hint">
-                    <span>Continuar en mi correo</span>
-                    <ArrowRight size={20} aria-hidden="true" className="transition-transform duration-200 ease-out group-hover/submit:translate-x-1" />
-                  </button>
-                  <div className="contact-submit-footer">
-                    <ShieldCheck size={18} className="text-emerald-700 shrink-0" aria-hidden="true" />
-                    <p id="contact-email-hint" className="contact-email-hint">
-                      Se abrirá tu aplicación de correo con el mensaje preparado. Revisalo y enviá la consulta desde allí.
-                    </p>
+                <div className="contact-field">
+                  <label htmlFor="contact-service">
+                    <span>Motivo de la consulta</span>
+                    <span className="contact-field-optional">Opcional</span>
+                  </label>
+                  <div className="contact-select">
+                    <select id="contact-service" name="service" defaultValue="">
+                      <option value="">Consulta general</option>
+                      {servicesData.map(({ id, title }) => (
+                        <option key={id} value={id}>{serviceLabels[id] ?? title}</option>
+                      ))}
+                    </select>
+                    <ChevronDown size={19} aria-hidden="true" />
                   </div>
                 </div>
-              </form>
-            </div>
+              </div>
+
+              <div className="contact-field contact-field-message">
+                <label htmlFor="contact-message">
+                  <span>Detalle de la consulta</span>
+                  <span className="contact-required-mark" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  rows={4}
+                  maxLength={messageMaxLength}
+                  aria-describedby="contact-message-hint"
+                  placeholder="Ej.: Llevo el stock en Excel y necesito registrar las ventas."
+                />
+                <div className="contact-message-meta">
+                  <p id="contact-message-hint">Incluí las herramientas o el equipo que usás.</p>
+                  <span className="contact-message-count" aria-label={`${messageLength} de ${messageMaxLength} caracteres`}>
+                    {messageLength} / {messageMaxLength}
+                  </span>
+                </div>
+              </div>
+
+              <div className="contact-form-actions">
+                <button type="submit" className="button-primary contact-submit-button group/submit" aria-describedby="contact-email-hint">
+                  <span>Continuar en mi correo</span>
+                  <ArrowRight size={20} aria-hidden="true" className="transition-transform duration-200 ease-out group-hover/submit:translate-x-1" />
+                </button>
+                <p id="contact-email-hint" className="ct2-hint">Se abrirá tu correo con el mensaje preparado.</p>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
   )
 }
-
