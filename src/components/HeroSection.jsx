@@ -57,7 +57,7 @@ export default function HeroSection() {
       <div className="page-container hero-layout">
         <div className="hero-center">
           <div className="hero-title-wrap">
-            <img className="hero-mark" src="/assets/logo-light.png" alt="" width="512" height="512" aria-hidden="true" />
+            <img className="hero-mark" src="/assets/logo.png" alt="" width="512" height="512" aria-hidden="true" />
             <h1 id="hero-title" className="hero-title">
               Tresa<span className="hero-title-accent">Soft</span>
             </h1>
