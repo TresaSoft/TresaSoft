@@ -6107,6 +6107,43 @@
     padding-top: clamp(40px, 4vw, 56px);
   }
 
+  /* ---- v62 — Menú móvil a ancho completo, pegado al header y sin márgenes ---- */
+  .mobile-navigation {
+    top: 100%;
+    padding: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid #c3d3cf;
+    box-shadow: 0 24px 40px -20px rgba(8, 28, 34, 0.45);
+  }
+  .mobile-navigation[hidden] {
+    display: none;
+  }
+  .mobile-nav-panel {
+    max-width: none;
+    margin: 0;
+    padding: 0 0 env(safe-area-inset-bottom);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .mobile-nav-link {
+    min-height: 54px;
+    padding: 12px 24px;
+    border-radius: 0;
+    font-size: 16px;
+  }
+  .mobile-nav-panel > div:last-child {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #d3dfdc;
+  }
+  .mobile-nav-cta {
+    min-height: 56px;
+    border-radius: 0;
+    font-size: 16px;
+  }
+
   @media (max-width: 1023px) {
     .hero-horizon {
       top: calc(100% - 150px);
