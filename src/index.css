@@ -5891,6 +5891,233 @@
     border-bottom: 1px solid rgba(140, 200, 212, 0.22);
   }
 
+    /* ---- v55 — Botón del home: borde con color que cambia (sutil) y tamaño contenido en celular ---- */
+  .hero-cta {
+    position: relative;
+    overflow: visible;
+    border-color: transparent;
+  }
+  .hero-cta::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--cta-angle),
+      #4aa3b8,
+      #6d92d6,
+      #9a86d6,
+      #d28fb4,
+      #d9ad74,
+      #7fcf9f,
+      #4aa3b8
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: cta-border-spin 8s linear infinite;
+    transition: opacity 200ms ease;
+  }
+  .hero-cta:hover::before,
+  .hero-cta:focus-visible::before {
+    opacity: 0.95;
+  }
+  @media (max-width: 639px) {
+    .hero-center .hero-actions {
+      align-items: center;
+      width: auto;
+    }
+    .hero-center .hero-cta {
+      width: auto;
+      min-height: 46px;
+      padding: 11px 18px;
+      font-size: 14.5px;
+    }
+  }
+
+  /* ---- v56 — Fondo del home en pantallas angostas: mismo resplandor que en desktop (las elipses en % se estiraban en vertical) ---- */
+  @media (max-width: 1023px) {
+    .hero-section {
+      background:
+        radial-gradient(ellipse 170% 62% at 88% 0%, rgba(20, 150, 160, 0.2), transparent 70%),
+        radial-gradient(ellipse 130% 40% at 0% 100%, rgba(80, 200, 180, 0.05), transparent 70%),
+        linear-gradient(180deg, #0a2229 0%, #081b20 55%, #06151a 100%);
+    }
+    .hero-aura {
+      opacity: 0.4;
+    }
+  }
+
+  /* ---- v57 — Mobile: botón del home compacto, servicios y contacto más livianos, menú con estados visibles ---- */
+
+  /* Menú móvil: el ítem activo / tocado se ve (antes quedaba blanco sobre fondo claro) */
+  .mobile-nav-link {
+    position: relative;
+    color: #2c3f45;
+  }
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus-visible,
+  .mobile-nav-link:active {
+    background: #dcecef;
+    color: #0f4c5a;
+  }
+  .mobile-nav-link.mobile-nav-link-active {
+    background: #e4f1f4;
+    color: #0f4c5a;
+    font-weight: 700;
+    box-shadow: inset 3px 0 0 #176477;
+  }
+  .mobile-nav-link:active {
+    background: #cfe4e8;
+  }
+  .mobile-nav-cta:active {
+    background: #0b3c47;
+  }
+  .site-header-dark .menu-toggle:hover,
+  .site-header-dark .menu-toggle:active,
+  .site-header-dark .menu-toggle:focus-visible {
+    border-color: rgba(140, 205, 205, 0.7);
+    background: rgba(111, 183, 198, 0.24);
+  }
+  .site-header-solid .menu-toggle:hover,
+  .site-header-solid .menu-toggle:active,
+  .site-header-solid .menu-toggle:focus-visible,
+  .site-header-solid .menu-toggle[aria-expanded="true"] {
+    border-color: #176477;
+    background: #e4f1f4;
+    color: #176477;
+  }
+
+  @media (max-width: 639px) {
+    /* Botón del home */
+    .hero-center .hero-cta {
+      justify-content: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 0 16px 0 18px;
+      font-size: 13.5px;
+    }
+    .hero-center .hero-cta-arrow {
+      width: auto;
+      margin: 0;
+      padding: 0;
+      background: none;
+    }
+    .hero-center .hero-cta-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .section-title,
+    .services-heading .section-title {
+      font-size: 1.625rem;
+      line-height: 1.15;
+    }
+
+    /* Servicios */
+    .sv-list-wrap {
+      gap: 14px;
+    }
+    .sv-card {
+      padding: 16px 14px;
+    }
+    .sv-icon {
+      width: 36px;
+      height: 36px;
+    }
+    .sv-badge {
+      font-size: 10px;
+    }
+    .sv-card h3 {
+      margin-top: 12px;
+      font-size: 1.0625rem;
+    }
+    .sv-desc {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .sv-areas {
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+    .sv-kicker {
+      font-size: 10px;
+    }
+    .sv-list {
+      gap: 6px;
+      margin-top: 0;
+    }
+    .sv-list li {
+      font-size: 13px;
+    }
+    .sv-action {
+      margin-top: 18px;
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+
+    /* Contacto: sin logo ni rótulos, formulario más corto */
+    .cx-heading .cx-lead,
+    .cx-info .cx-logo,
+    .sv-kicker,
+    .cx-info .cx-label,
+    .cx-link-kicker,
+    .cx .contact-message-meta p,
+    .cx .ct2-hint {
+      display: none;
+    }
+    .cx-info .cx-logo {
+      display: none !important;
+    }
+    .cx-info {
+      padding: 20px 18px;
+    }
+    .cx-links {
+      gap: 12px;
+    }
+    .cx-links a,
+    .cx-links li > div {
+      gap: 12px;
+    }
+    .cx-link-icon {
+      width: 36px;
+      height: 36px;
+    }
+    .cx-link-value {
+      font-size: 0.9375rem;
+    }
+    .cx .cx-form.contact-form,
+    .cx .cx-form.contact-form:hover {
+      padding: 20px 18px;
+    }
+    .cx-form-title {
+      margin-bottom: 14px;
+      font-size: 1.1875rem;
+    }
+    .cx .contact-field-row {
+      gap: 12px;
+    }
+    .cx .contact-form label {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .cx .cx-form textarea {
+      height: 96px;
+      min-height: 0;
+    }
+    .cx .contact-form-actions {
+      margin-top: 14px;
+    }
+    .cx .contact-submit-button {
+      min-height: 46px;
+      font-size: 15.5px;
+    }
+  }
+
   @media (max-width: 1023px) {
     .hero-horizon {
       top: calc(100% - 150px);
@@ -5936,6 +6163,16 @@
 }
 
 /* Animations */
+@property --cta-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes cta-border-spin {
+  to { --cta-angle: 360deg; }
+}
+
 @keyframes hero-arrive {
   from {
     opacity: 0;
