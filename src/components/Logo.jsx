@@ -1,16 +1,16 @@
 import React from 'react'
 
-export function LogoEmblem({ className = "w-10 h-10" }) {
+export function LogoEmblem({ className = "w-10 h-10", variant = "dark" }) {
   return (
-    <span className={`brand-emblem ${className}`} aria-hidden="true">
-      <img
-        src="/assets/imagen1.png"
-        alt=""
-        width="1254"
-        height="1254"
-        decoding="async"
-      />
-    </span>
+    <img
+      src={variant === "light" ? "/assets/logo-light.png" : "/assets/logo.png"}
+      alt=""
+      width="512"
+      height="512"
+      decoding="async"
+      aria-hidden="true"
+      className={`brand-mark ${className}`}
+    />
   )
 }
 
@@ -24,17 +24,17 @@ export default function Logo({
 
   const sizes = {
     sm: {
-      emblem: "w-8 h-8",
+      emblem: "w-10 h-10",
       title: "text-lg",
       subtitle: "text-[9px]"
     },
     md: {
-      emblem: "w-10 h-10",
+      emblem: "w-12 h-12",
       title: "text-xl",
       subtitle: "text-[10px]"
     },
     lg: {
-      emblem: "w-14 h-14",
+      emblem: "w-16 h-16",
       title: "text-2xl sm:text-3xl",
       subtitle: "text-xs"
     }
@@ -43,7 +43,7 @@ export default function Logo({
 
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
-      <LogoEmblem className={sizeClasses.emblem} />
+      <LogoEmblem className={sizeClasses.emblem} variant={variant} />
       <div className="flex flex-col leading-none">
         <span className={`font-extrabold tracking-tight ${sizeClasses.title} ${isLightText ? 'text-white' : 'text-[#091c21]'}`}>
           Tresa<span className={isLightText ? 'text-[#4AA3B8]' : 'text-[#176477]'}>Soft</span>

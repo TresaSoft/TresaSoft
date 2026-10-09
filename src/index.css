@@ -6118,6 +6118,13 @@
     }
   }
 
+  /* ---- v58 — Nuevo logo (marca sin fondo, dos variantes: oscuro y claro) ---- */
+  .brand-mark {
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
   @media (max-width: 1023px) {
     .hero-horizon {
       top: calc(100% - 150px);
