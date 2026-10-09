@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { ArrowRight, ChevronDown, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { ArrowRight, ChevronDown, Mail, MapPin } from 'lucide-react'
+import Logo from './Logo.jsx'
 import { servicesData } from '../data/servicesData.js'
-import { whatsappContacts } from '../data/whatsappContacts.js'
 
 const contactEmail = 'TresArroyosSoft@gmail.com'
 const messageMaxLength = 3000
@@ -10,20 +10,6 @@ const serviceLabels = {
   automatizacion: 'Automatización de procesos',
   'soporte-tecnico': 'Soporte técnico informático',
 }
-
-// lucide-react no trae íconos de marcas: mismo trazo (2 px, puntas redondeadas).
-function InstagramIcon() {
-  return (
-    <svg width="18" height="18" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  )
-}
-
-// 5492983600680 -> +54 9 2983 60-0680
-const formatPhone = (n) => '+' + n.slice(0, 2) + ' ' + n[2] + ' ' + n.slice(3, 7) + ' ' + n.slice(7, 9) + '-' + n.slice(9)
 
 export default function ContactSection() {
   const [messageLength, setMessageLength] = useState(0)
@@ -65,45 +51,26 @@ export default function ContactSection() {
         <div className="cx">
           {/* Izquierda: medios de contacto directo */}
           <div className="cx-info">
-            <p className="cx-label">Escribinos por WhatsApp</p>
-            <div className="cx-wa">
-              {whatsappContacts.map(({ name, number }) => (
-                <a
-                  key={number}
-                  href={`https://wa.me/${number}?text=${encodeURIComponent(`Hola ${name}, quiero hacer una consulta desde la web de TresaSoft.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle size={22} aria-hidden="true" />
-                  <span className="cx-wa-text">
-                    <span className="cx-wa-name">Escribir a {name}</span>
-                    <span className="cx-wa-number">{formatPhone(number)}</span>
-                  </span>
-                  <span className="sr-only">(se abre WhatsApp en una pestaña nueva)</span>
-                </a>
-              ))}
-            </div>
-
-            <p className="cx-label cx-label-sep">Otros medios</p>
+            <Logo variant="light" size="lg" className="cx-logo" />
+            <p className="cx-label">Datos de contacto</p>
             <ul className="cx-links">
               <li>
                 <a href={`mailto:${contactEmail}`}>
-                  <Mail size={18} aria-hidden="true" />
-                  <span>{contactEmail}</span>
+                  <span className="cx-link-icon"><Mail size={20} aria-hidden="true" /></span>
+                  <span className="cx-link-text">
+                    <span className="cx-link-kicker">Correo</span>
+                    <span className="cx-link-value">{contactEmail}</span>
+                  </span>
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com/tresasoft" target="_blank" rel="noopener noreferrer">
-                  <InstagramIcon />
-                  <span>@tresasoft</span>
-                  <span className="sr-only"> (se abre en una pestaña nueva)</span>
-                </a>
-              </li>
-              <li>
-                <span>
-                  <MapPin size={18} aria-hidden="true" />
-                  <span>Tres Arroyos, Buenos Aires</span>
-                </span>
+                <div>
+                  <span className="cx-link-icon"><MapPin size={20} aria-hidden="true" /></span>
+                  <span className="cx-link-text">
+                    <span className="cx-link-kicker">Ubicación</span>
+                    <span className="cx-link-value">Tres Arroyos, Buenos Aires</span>
+                  </span>
+                </div>
               </li>
             </ul>
           </div>

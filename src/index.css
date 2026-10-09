@@ -5824,6 +5824,73 @@
     color: #8cc8d4;
   }
 
+  /* ---- v53 — Panel de contacto: solo correo y ubicación ---- */
+  .cx-info .cx-label {
+    margin-bottom: 20px;
+  }
+  .cx-links {
+    gap: 18px;
+  }
+  .cx-links li:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .cx-links a,
+  .cx-links li > div {
+    display: flex;
+    min-height: 0;
+    max-width: 100%;
+    align-items: center;
+    gap: 16px;
+    color: #e3f0f2;
+  }
+  .cx-link-icon {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid rgba(140, 200, 212, 0.28);
+    border-radius: 6px;
+    background: rgba(140, 200, 212, 0.08);
+    color: #8cc8d4;
+  }
+  .cx-link-text {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cx-link-kicker {
+    color: #8cc8d4;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .cx-link-value {
+    color: #ffffff;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  .cx-links a:hover .cx-link-value {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .cx-links a:hover .cx-link-icon {
+    border-color: rgba(140, 200, 212, 0.6);
+    background: rgba(140, 200, 212, 0.16);
+  }
+
+  /* ---- v54 — Logo en el panel de contacto ---- */
+  .cx-logo {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(140, 200, 212, 0.22);
+  }
+
   @media (max-width: 1023px) {
     .hero-horizon {
       top: calc(100% - 150px);
