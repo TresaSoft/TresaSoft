@@ -6099,43 +6099,12 @@
     }
   }
 
-  /* ---- v60 — Menos aire entre Servicios y Contacto; logo muy tenue con leve movimiento detrás del título ---- */
+  /* ---- v60 — Menos aire entre Servicios y Contacto ---- */
   .services-section {
     padding-bottom: clamp(40px, 4vw, 56px);
   }
   .cx-section {
     padding-top: clamp(40px, 4vw, 56px);
-  }
-
-  .hero-title-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  .hero-title-wrap .hero-title {
-    position: relative;
-  }
-  .hero-mark {
-    position: absolute;
-    top: calc(50% + var(--header-height, 80px) / 2);
-    left: 50%;
-    width: clamp(200px, 30vw, 380px);
-    height: auto;
-    max-width: none;
-    opacity: 0.07;
-    filter: brightness(1.8);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    animation: hero-mark-drift 18s ease-in-out infinite;
-  }
-  @keyframes hero-mark-drift {
-    0%, 100% { transform: translate(-50%, -50%) rotate(-3deg) scale(1); }
-    50% { transform: translate(-50%, calc(-50% - 10px)) rotate(3deg) scale(1.04); }
-  }
-
-  /* ---- v61 — Contenido del home centrado en el alto útil (descontando el header), igual que el logo de fondo ---- */
-  .hero-layout {
-    padding-top: var(--header-height);
   }
 
   @media (max-width: 1023px) {
