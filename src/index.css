@@ -6144,6 +6144,470 @@
     font-size: 16px;
   }
 
+  /* ---- v63 — Equipo: quiénes estamos detrás, con enlaces a GitHub / portfolio ---- */
+  .tm {
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+  .tm-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d3dfdc;
+  }
+  .tm-title {
+    color: #091c21;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .tm-org,
+  .tm-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    color: #176477;
+    font-size: 15px;
+    font-weight: 700;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  }
+  .tm-org {
+    padding: 8px 14px;
+    border: 1.5px solid #176477;
+  }
+  .tm-org:hover {
+    background: #176477;
+    color: #ffffff;
+  }
+  .tm-org:focus-visible,
+  .tm-links a:focus-visible {
+    outline: 3px solid #176477;
+    outline-offset: 3px;
+  }
+  .tm-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+  @media (min-width: 720px) {
+    .tm-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  }
+  .tm-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border: 1px solid #c3d3cf;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #ffffff 0%, #f2f9fa 100%);
+    box-shadow: 0 1px 2px rgba(9, 28, 33, 0.07), 0 12px 26px -16px rgba(23, 100, 119, 0.3);
+  }
+  .tm-avatar {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 6px;
+    background: linear-gradient(160deg, #0a2229, #176477);
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .tm-info {
+    min-width: 0;
+  }
+  .tm-role {
+    color: #176477;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .tm-name {
+    margin-top: 2px;
+    color: #091c21;
+    font-family: var(--font-display);
+    font-size: 1.1875rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .tm-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 8px;
+  }
+  .tm-links a {
+    font-size: 14px;
+  }
+  .tm-links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  @media (max-width: 639px) {
+    .tm-title { font-size: 1.0625rem; }
+    .tm-card { padding: 14px; gap: 12px; }
+    .tm-avatar { width: 44px; height: 44px; font-size: 1rem; }
+    .tm-name { font-size: 1.0625rem; }
+    .tm-org { padding: 7px 12px; font-size: 14px; }
+  }
+
+  /* ---- v64 — Equipo dentro del panel oscuro de contacto ---- */
+  .cx-info .tm {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(140, 200, 212, 0.22);
+  }
+  .cx-info .tm-head {
+    padding: 0;
+    border: 0;
+    gap: 10px 16px;
+  }
+  .cx-info .tm-title {
+    color: #8cc8d4;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cx-info .tm-org {
+    padding: 6px 12px;
+    border-color: rgba(140, 200, 212, 0.5);
+    color: #e3f0f2;
+    font-size: 14px;
+  }
+  .cx-info .tm-org:hover {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #0a2229;
+  }
+  .cx-info .tm-org:focus-visible,
+  .cx-info .tm-links a:focus-visible {
+    outline-color: #8cc8d4;
+  }
+  .cx-info .tm-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .cx-info .tm-card {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    gap: 14px;
+  }
+  .cx-info .tm-avatar {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(140, 200, 212, 0.28);
+    background: rgba(140, 200, 212, 0.08);
+    color: #8cc8d4;
+    font-size: 1rem;
+  }
+  .cx-info .tm-role {
+    color: #8cc8d4;
+  }
+  .cx-info .tm-name {
+    color: #ffffff;
+    font-size: 1.0625rem;
+  }
+  .cx-info .tm-links a {
+    color: #bfe3ea;
+  }
+  .cx-info .tm-links a:hover {
+    color: #ffffff;
+  }
+  @media (max-width: 639px) {
+    .cx-info .tm { margin-top: 20px; padding-top: 18px; }
+    .cx-info .tm-card { padding: 0; }
+  }
+
+  /* ---- v65 — Equipo: stickers en vez de iniciales, sin botón del GitHub de la empresa ---- */
+  .cx-info .tm-title {
+    margin: 0;
+  }
+  .tm-sticker {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    place-items: center;
+    overflow: hidden;
+    border: 3px solid #ffffff;
+    border-radius: 14px;
+    background: #4aa3b8;
+    color: #081b20;
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(8, 27, 32, 0.25);
+    transform: rotate(-5deg);
+    transition: transform 200ms ease;
+  }
+  .tm-sticker-terminal {
+    background: #8cc8d4;
+    transform: rotate(4deg);
+  }
+  .tm-sticker img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tm-card:hover .tm-sticker {
+    transform: rotate(0deg) scale(1.06);
+  }
+  @media (max-width: 639px) {
+    .tm-sticker { width: 46px; height: 46px; }
+  }
+
+  /* ---- v66 — Stickers del equipo más chicos ---- */
+  .tm-sticker {
+    width: 38px;
+    height: 38px;
+    border-width: 2px;
+    border-radius: 10px;
+  }
+  .cx-info .tm-card {
+    gap: 12px;
+  }
+  @media (max-width: 639px) {
+    .tm-sticker { width: 36px; height: 36px; }
+  }
+
+  /* ---- v67 — Equipo: filas parejas dentro de recuadros tenues ---- */
+  .cx-info .tm-list {
+    grid-auto-rows: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .cx-info .tm-card {
+    min-height: 68px;
+    padding: 12px 14px;
+    gap: 14px;
+    border: 1px solid rgba(140, 200, 212, 0.22);
+    border-radius: 8px;
+    background: rgba(140, 200, 212, 0.06);
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+  .cx-info .tm-card:hover {
+    border-color: rgba(140, 200, 212, 0.5);
+    background: rgba(140, 200, 212, 0.1);
+  }
+  .cx-info .tm-sticker {
+    width: 40px;
+    height: 40px;
+  }
+  .cx-info .tm-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .cx-info .tm-name {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .cx-info .tm-links {
+    margin-top: 2px;
+    gap: 4px 14px;
+  }
+  .cx-info .tm-links a {
+    gap: 4px;
+    color: #8cc8d4;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(140, 200, 212, 0.4);
+    text-underline-offset: 3px;
+  }
+  .cx-info .tm-links a:hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+  }
+  @media (max-width: 639px) {
+    .cx-info .tm-card { min-height: 62px; padding: 10px 12px; }
+    .cx-info .tm-sticker { width: 38px; height: 38px; }
+  }
+
+  /* ---- v68 — Panel de contacto sin recuadros ni separadores de más: filas planas y alineadas ---- */
+  .cx-info .tm {
+    margin-top: 32px;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .cx-info .tm-list {
+    grid-auto-rows: auto;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .cx-info .tm-card,
+  .cx-info .tm-card:hover {
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    gap: 16px;
+  }
+  .cx-info .tm-sticker {
+    width: 44px;
+    height: 44px;
+  }
+  .cx-info .tm-info {
+    justify-content: center;
+    min-height: 44px;
+  }
+  .cx-info .cx-label {
+    margin-bottom: 20px;
+  }
+  .cx-info .tm-title {
+    margin: 0;
+  }
+  @media (max-width: 639px) {
+    .cx-info .tm { margin-top: 24px; }
+    .cx-info .tm-sticker { width: 40px; height: 40px; }
+    .cx-info .tm-info { min-height: 40px; }
+  }
+
+  /* ---- v69 — Íconos del panel de contacto alineados: mismo tamaño, forma y eje vertical ---- */
+  .cx-info .cx-link-icon,
+  .cx-info .tm-sticker {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: none;
+  }
+  .cx-info .cx-link-icon {
+    border-width: 2px;
+  }
+  .cx-info .tm-sticker {
+    border-width: 2px;
+    box-shadow: none;
+  }
+  .cx-info .tm-card:hover .tm-sticker {
+    transform: none;
+  }
+  .cx-info .cx-links a,
+  .cx-info .cx-links li > div,
+  .cx-info .tm-card {
+    gap: 16px;
+  }
+  .cx-info .cx-links {
+    gap: 16px;
+  }
+  .cx-info .tm-info,
+  .cx-info .cx-link-text {
+    min-height: 44px;
+    justify-content: center;
+  }
+  @media (max-width: 639px) {
+    .cx-info .cx-link-icon,
+    .cx-info .tm-sticker {
+      width: 40px;
+      height: 40px;
+    }
+    .cx-info .tm-info,
+    .cx-info .cx-link-text {
+      min-height: 40px;
+    }
+  }
+
+  /* ---- v70 — Íconos del panel de contacto sin fondo ni borde ---- */
+  .cx-info .cx-link-icon,
+  .cx-info .cx-links a:hover .cx-link-icon,
+  .cx-info .tm-sticker,
+  .cx-info .tm-sticker-terminal {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .cx-info .cx-link-icon {
+    color: #8cc8d4;
+  }
+  .cx-info .tm-sticker {
+    color: #4aa3b8;
+  }
+  .cx-info .tm-sticker-terminal {
+    color: #8cc8d4;
+  }
+  .cx-info .tm-sticker svg {
+    width: 24px;
+    height: 24px;
+  }
+  .cx-info .cx-link-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* ---- v71 — Íconos sin fondo pegados al borde izquierdo del panel ---- */
+  .cx-info .cx-link-icon,
+  .cx-info .tm-sticker {
+    width: 28px;
+    place-items: center start;
+  }
+  .cx-info .cx-links a,
+  .cx-info .cx-links li > div,
+  .cx-info .tm-card {
+    gap: 14px;
+  }
+  @media (max-width: 639px) {
+    .cx-info .cx-link-icon,
+    .cx-info .tm-sticker {
+      width: 28px;
+    }
+  }
+
+  /* ---- v72 — Íconos del panel: solo un borde fino, sin fondo ---- */
+  .cx-info .cx-link-icon,
+  .cx-info .tm-sticker {
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(140, 200, 212, 0.4);
+    border-radius: 8px;
+  }
+  .cx-info .cx-link-icon svg,
+  .cx-info .tm-sticker svg {
+    width: 20px;
+    height: 20px;
+  }
+  .cx-info .cx-links a,
+  .cx-info .cx-links li > div,
+  .cx-info .tm-card {
+    gap: 16px;
+  }
+  .cx-info .cx-links a:hover .cx-link-icon,
+  .cx-info .tm-card:hover .tm-sticker {
+    border-color: rgba(140, 200, 212, 0.75);
+  }
+  .cx-info .tm-info,
+  .cx-info .cx-link-text {
+    min-height: 42px;
+  }
+  @media (max-width: 639px) {
+    .cx-info .cx-link-icon,
+    .cx-info .tm-sticker {
+      width: 40px;
+      height: 40px;
+    }
+    .cx-info .tm-info,
+    .cx-info .cx-link-text {
+      min-height: 40px;
+    }
+  }
+
   @media (max-width: 1023px) {
     .hero-horizon {
       top: calc(100% - 150px);

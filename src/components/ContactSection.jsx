@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ArrowRight, ChevronDown, Mail, MapPin } from 'lucide-react'
 import Logo from './Logo.jsx'
+import TeamBlock from './TeamBlock.jsx'
 import { servicesData } from '../data/servicesData.js'
 
 const contactEmail = 'TresArroyosSoft@gmail.com'
@@ -73,6 +74,8 @@ export default function ContactSection() {
                 </div>
               </li>
             </ul>
+
+            <TeamBlock />
           </div>
 
           {/* Formulario por correo */}
